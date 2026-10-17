@@ -1,0 +1,19 @@
+{
+  "status": "proposed_not_run",
+  "target": "next_7_calendar_days_total_cargo_tonnes",
+  "horizon_days": 7,
+  "history_days": [
+    7,
+    28
+  ],
+  "random_seed": 42,
+  "train_end": null,
+  "validation_end": null,
+  "test_end": null,
+  "port_selection": "decide_from_training_data",
+  "primary_selection_metric": "validation_MAE",
+  "pool_ports": true,
+  "refit_before_test": false,
+  "clip_negative_predictions": null,
+  "data_snapshot_sha256": null
+}
