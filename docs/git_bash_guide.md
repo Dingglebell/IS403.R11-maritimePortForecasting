@@ -25,13 +25,13 @@ Replace `task1-han` with your own new branch name. Then edit and save your files
 ## 3 Commit and push your work
 
 ```bash
+git add -A
 git status
-git add "docs/Task 1_Han.md"
 git commit -m "Update the data preparation task"
 git push -u origin task1-han
 ```
 
-Replace the file path, message and branch with yours. Repeat `git add "file"` for each file you want to include. A commit saves your changes locally; push uploads them to GitHub.
+Replace the message and branch with yours. `git add -A` stages all new, modified and deleted files across the repository, except ignored files. Check `git status` before committing. A commit saves locally; push uploads to GitHub.
 
 ## 4 Create a pull request
 
@@ -45,3 +45,17 @@ git pull --ff-only origin main
 ```
 
 Start the next task on a new branch.
+
+## 5 Save all changes directly to main
+
+If you are already on `main` and want to publish without a pull request:
+
+```bash
+git add -A
+git status
+git commit -m "Update project files and rename manifest"
+git push origin main
+```
+
+For the rename from `data/manifest.example.csv` to `data/example.csv`, first replace `!data/manifest.example.csv` with `!data/example.csv` in `.gitignore`. Otherwise, the new filename stays ignored. Then run the commands above; they include the rename and the `.gitignore` change.
+
