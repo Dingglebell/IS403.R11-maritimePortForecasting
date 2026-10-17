@@ -5,7 +5,7 @@
 Open Git Bash in an empty folder, then run:
 
 ```bash
-git clone https://github.com/Dingglebell/is403-maritime-port-forecasting.git .
+git clone https://github.com/Dingglebell/IS403.R11-maritimePortForecasting.git .
 ```
 
 The final dot means “use this folder.” Run this only once. If you already have the repository, skip this step.
@@ -35,7 +35,7 @@ Replace the message and branch with yours. `git add -A` stages all new, modified
 
 ## 4 Create a pull request
 
-Open [the repository on GitHub](https://github.com/Dingglebell/is403-maritime-port-forecasting). Click **Compare & pull request**, set the base to `main` and compare to your branch, add a title and short description, then click **Create pull request**. If the banner is absent, use **Pull requests → New pull request**. Ask a teammate to review before merging.
+Open [the repository on GitHub](https://github.com/Dingglebell/IS403.R11-maritimePortForecasting). Click **Compare & pull request**, set the base to `main` and compare to your branch, add a title and short description, then click **Create pull request**. If the banner is absent, use **Pull requests → New pull request**. Ask a teammate to review before merging.
 
 After the pull request is merged, with your work committed:
 
@@ -58,4 +58,3 @@ git push origin main
 ```
 
 For the rename from `data/manifest.example.csv` to `data/example.csv`, first replace `!data/manifest.example.csv` with `!data/example.csv` in `.gitignore`. Otherwise, the new filename stays ignored. Then run the commands above; they include the rename and the `.gitignore` change.
-
