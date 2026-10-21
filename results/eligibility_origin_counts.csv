@@ -1,0 +1,3 @@
+eligibility_rule,eligible_ports,complete_training_rows_before_port_rule,training_rows,training_rows_excluded_by_port_rule,complete_validation_rows_before_common_set,common_validation_rows,common_validation_ports,validation_rows_excluded_by_common_set
+coverage_only,210,453180,453180,0,75390,49183,137,26207
+active_20pct,137,453180,295646,157534,75390,49183,137,26207

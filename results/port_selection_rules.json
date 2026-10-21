@@ -1,0 +1,42 @@
+{
+  "train_start": "2019-01-01",
+  "train_end": "2024-12-31",
+  "validation_end": "2025-12-31",
+  "test_end": "2026-10-02",
+  "rule": {
+    "status": "candidate_for_validation",
+    "min_active_share": 0.2,
+    "min_cargo_coverage": 1.0,
+    "activity_group_cuts": [
+      0.3333333333333333,
+      0.6666666666666666
+    ],
+    "active_share_denominator": "all_training_calendar_days",
+    "rationale": "Compare the protocol's 20% activity candidate with coverage-only eligibility. Require complete training cargo coverage to avoid imputation; fixed one-third/two-thirds bands describe training activity and are not tuned on validation or test.",
+    "joint_validation_review": "pending"
+  },
+  "snapshot_sha256": "fb4eee5b71de5692334abc45fadbee522fc32572e30ded15f2e6daeade137070",
+  "frozen": false,
+  "time_split_agreement": {
+    "status": "agreed",
+    "agreed_by": [
+      "Dinh",
+      "Hieu"
+    ],
+    "reported_by": "Nguyen Thi Quynh Han",
+    "reported_on": "2026-10-20",
+    "evidence": "Han explicitly confirmed in this conversation that both Dinh and Hieu agreed to these dates."
+  },
+  "remaining": "Review validation-only sensitivity with Task 2 and jointly freeze the chosen rule before test scoring",
+  "validation_diagnostic": {
+    "status": "diagnostic_complete; joint_task2_review_pending",
+    "recommended_rule": "active_20pct",
+    "common_keys_sha256": "bc3917317eef025f673126c4094d4545d0bd7dd82ee4fa83d7ed25d12c881aa5",
+    "common_validation_rows": 49183,
+    "common_validation_ports": 137,
+    "test_scored": false,
+    "frozen": false,
+    "report": "results/eligibility_validation.md",
+    "information_cutoff": "protocol same-day-availability scenario; historical availability unverified"
+  }
+}

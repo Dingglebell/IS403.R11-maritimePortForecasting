@@ -1,0 +1,184 @@
+{
+  "generated_at_utc": "2026-10-20T02:30:57.164117+00:00",
+  "status": "diagnostic_complete; joint_task2_review_pending",
+  "frozen": false,
+  "config": {
+    "train_start": "2019-01-01",
+    "train_end": "2024-12-31",
+    "validation_end": "2025-12-31",
+    "test_end": "2026-10-02",
+    "data_snapshot_sha256": "fb4eee5b71de5692334abc45fadbee522fc32572e30ded15f2e6daeade137070",
+    "candidates": {
+      "coverage_only": 0.0,
+      "active_20pct": 0.2
+    },
+    "min_cargo_coverage": 1.0,
+    "activity_group_cuts": [
+      0.3333333333333333,
+      0.6666666666666666
+    ],
+    "features": [
+      "cargo_7d",
+      "calls_7d",
+      "cargo_mean_28d"
+    ],
+    "clipping": false,
+    "information_cutoff": "protocol same-day-availability scenario; historical availability unverified"
+  },
+  "panel_sha256": "f8c402ed90ad70d851b0cf82e4c57d1d810cc3faa3bac958efd4bf68dd96d9b6",
+  "script_sha256": "9f2f3575f244535fe03f44225713d712208d2f9db8bd24fd5f8a8d1edacf89a8",
+  "preparation_script_sha256": "c660b155ed05a74168df00232a92a718e2ccefb1cef423e5f5eba51ba3a0ff3c",
+  "common_keys_sha256": "bc3917317eef025f673126c4094d4545d0bd7dd82ee4fa83d7ed25d12c881aa5",
+  "common_validation_ports": 137,
+  "common_validation_rows": 49183,
+  "models": {
+    "coverage_only": {
+      "feature_order": [
+        "cargo_7d",
+        "calls_7d",
+        "cargo_mean_28d"
+      ],
+      "training_mean": [
+        206235.94441943598,
+        21.335965841387527,
+        29429.467272228634
+      ],
+      "training_scale": [
+        1064780.927931493,
+        66.81582487257096,
+        151631.21577256484
+      ],
+      "coefficients_intercept_then_scaled_features": [
+        206403.1112405667,
+        101885.82089814679,
+        9346.931704602586,
+        949654.4910908472
+      ],
+      "design_rank": 4,
+      "design_columns": 4,
+      "condition_number": 31.42103414531272,
+      "clip_negative_predictions": false
+    },
+    "active_20pct": {
+      "feature_order": [
+        "cargo_7d",
+        "calls_7d",
+        "cargo_mean_28d"
+      ],
+      "training_mean": [
+        311832.87961616257,
+        32.3382998586147,
+        44497.151341227596
+      ],
+      "training_scale": [
+        1305895.9397367502,
+        80.58700500512519,
+        185970.50480314175
+      ],
+      "coefficients_intercept_then_scaled_features": [
+        312089.05115915666,
+        127441.68428459794,
+        11440.844746758834,
+        1162207.0173036647
+      ],
+      "design_rank": 4,
+      "design_columns": 4,
+      "condition_number": 31.426025175589068,
+      "clip_negative_predictions": false
+    }
+  },
+  "origin_counts": [
+    {
+      "eligibility_rule": "coverage_only",
+      "eligible_ports": 210,
+      "complete_training_rows_before_port_rule": 453180,
+      "training_rows": 453180,
+      "training_rows_excluded_by_port_rule": 0,
+      "complete_validation_rows_before_common_set": 75390,
+      "common_validation_rows": 49183,
+      "common_validation_ports": 137,
+      "validation_rows_excluded_by_common_set": 26207
+    },
+    {
+      "eligibility_rule": "active_20pct",
+      "eligible_ports": 137,
+      "complete_training_rows_before_port_rule": 453180,
+      "training_rows": 295646,
+      "training_rows_excluded_by_port_rule": 157534,
+      "complete_validation_rows_before_common_set": 75390,
+      "common_validation_rows": 49183,
+      "common_validation_ports": 137,
+      "validation_rows_excluded_by_common_set": 26207
+    }
+  ],
+  "metrics": [
+    {
+      "eligibility_rule": "coverage_only",
+      "model": "multivariate_linear_regression",
+      "n_rows": 49183,
+      "n_ports": 137,
+      "MAE": 58964.81621960492,
+      "RMSE": 124385.55467801979,
+      "WAPE_pct": 16.79682416468648,
+      "macro_port_MAE": 58964.81621960492,
+      "zero_actual_windows": 1827,
+      "negative_predictions": 811,
+      "actual_tonnes_sum": 17265564774.0
+    },
+    {
+      "eligibility_rule": "coverage_only",
+      "model": "seasonal_naive",
+      "n_rows": 49183,
+      "n_ports": 137,
+      "MAE": 74370.4508265051,
+      "RMSE": 157772.85451924094,
+      "WAPE_pct": 21.185301094280902,
+      "macro_port_MAE": 74370.4508265051,
+      "zero_actual_windows": 1827,
+      "negative_predictions": 0,
+      "actual_tonnes_sum": 17265564774.0
+    },
+    {
+      "eligibility_rule": "active_20pct",
+      "model": "multivariate_linear_regression",
+      "n_rows": 49183,
+      "n_ports": 137,
+      "MAE": 58956.37878486688,
+      "RMSE": 124399.65895509422,
+      "WAPE_pct": 16.794420661770978,
+      "macro_port_MAE": 58956.37878486688,
+      "zero_actual_windows": 1827,
+      "negative_predictions": 1069,
+      "actual_tonnes_sum": 17265564774.0
+    },
+    {
+      "eligibility_rule": "active_20pct",
+      "model": "seasonal_naive",
+      "n_rows": 49183,
+      "n_ports": 137,
+      "MAE": 74370.4508265051,
+      "RMSE": 157772.85451924094,
+      "WAPE_pct": 21.185301094280902,
+      "macro_port_MAE": 74370.4508265051,
+      "zero_actual_windows": 1827,
+      "negative_predictions": 0,
+      "actual_tonnes_sum": 17265564774.0
+    }
+  ],
+  "recommended_rule": "active_20pct",
+  "active20_minus_coverage_only": {
+    "MAE_tonnes": -8.437434738043521,
+    "MAE_change_pct": -0.01430926996638073,
+    "RMSE_tonnes": 14.104277074424317
+  },
+  "recommendation_scope": "Only this fixed linear diagnostic on the common eligible cohort; requires Task 2 review before rule freeze",
+  "test_scored": false,
+  "last_measurement_used": "2025-12-31",
+  "runtime_seconds": 7.568994400033262,
+  "versions": {
+    "pandas": "3.0.1",
+    "numpy": "2.3.5",
+    "matplotlib": "3.11.2"
+  },
+  "python": "3.12.14"
+}

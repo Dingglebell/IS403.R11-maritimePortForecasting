@@ -1,0 +1,211 @@
+{
+  "generated_at_utc": "2026-10-20T02:30:34.938031+00:00",
+  "status": "panel_eda_and_candidate_ports_prepared; joint_validation_review_pending",
+  "raw_rows": 594720,
+  "panel_rows": 594720,
+  "ports": 210,
+  "countries": 10,
+  "calendar_days": 2832,
+  "date_min": "2019-01-01",
+  "date_max": "2026-10-02",
+  "missing_calendar_records": 0,
+  "missing_cargo_days": 0,
+  "duplicate_port_date_keys": 0,
+  "missing_source_values": 0,
+  "negative_source_values": 0,
+  "invalid_numeric_source_values": 0,
+  "source_calendar_component_errors": {
+    "year": 0,
+    "month": 0,
+    "day": 0
+  },
+  "known_cargo_days": 594720,
+  "positive_cargo_days": 272186,
+  "zero_cargo_days": 322534,
+  "zero_share_pct": 54.23291633037396,
+  "zero_with_positive_calls": 30228,
+  "zero_with_positive_calls_pct_of_zeros": 9.372035196289383,
+  "positive_cargo_without_calls": 0,
+  "zero_runs": 65053,
+  "long_zero_runs": 1173,
+  "ports_with_long_zero_runs": 97,
+  "long_zero_runs_with_calls": 622,
+  "entire_snapshot_zero_ports": 8,
+  "source_named_offshore_oil_terminal_ids": 44,
+  "all_zero_source_named_offshore_ids": 7,
+  "other_all_zero_source_names": "port2154 (Muntok)",
+  "longest_zero_run_days": 2832,
+  "source_rows_excluded": 0,
+  "ports_excluded_from_panel": 0,
+  "imputed_measurements": 0,
+  "component_checks": [
+    {
+      "source_total": "portcalls",
+      "complete_rows": 594720,
+      "different_from_category_sum": 0,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "source_total": "import",
+      "complete_rows": 594720,
+      "different_from_category_sum": 69981,
+      "max_absolute_difference": 4.0
+    },
+    {
+      "source_total": "export",
+      "complete_rows": 594720,
+      "different_from_category_sum": 64500,
+      "max_absolute_difference": 4.0
+    }
+  ],
+  "selection_run": true,
+  "data_snapshot_sha256": "fb4eee5b71de5692334abc45fadbee522fc32572e30ded15f2e6daeade137070",
+  "panel_sha256": "f8c402ed90ad70d851b0cf82e4c57d1d810cc3faa3bac958efd4bf68dd96d9b6",
+  "preparation_script_sha256": "c660b155ed05a74168df00232a92a718e2ccefb1cef423e5f5eba51ba3a0ff3c",
+  "versions": {
+    "pandas": "3.0.1",
+    "numpy": "2.3.5",
+    "matplotlib": "3.11.2"
+  },
+  "python": "3.12.14",
+  "source_files": [
+    {
+      "country": "brunei-darussalam",
+      "source_url": "https://data.humdata.org/dataset/brunei-darussalam-daily-port-activity-data-and-shipment-estimates",
+      "sha256": "afb2e60beb9e06b93af11296e8e02f1f1c9ecbb7dfc8af5806328377db3aaa9c"
+    },
+    {
+      "country": "cambodia",
+      "source_url": "https://data.humdata.org/dataset/cambodia-daily-port-activity-data-and-shipment-estimates",
+      "sha256": "99bbf1b06349a67d412e56d95d6292c3559a1bd5e3fb3980fe92d0456ba518ea"
+    },
+    {
+      "country": "indonesia",
+      "source_url": "https://data.humdata.org/dataset/indonesia-daily-port-activity-data-and-shipment-estimates",
+      "sha256": "3ce0f40467db8133f94b02e0aede6395b27279153d1fbe1485644d440b5a1c73"
+    },
+    {
+      "country": "malaysia",
+      "source_url": "https://data.humdata.org/dataset/malaysia-daily-port-activity-data-and-shipment-estimates",
+      "sha256": "6cf78b2171ff715f51ddd23ee4ba576e851b4d968892d4f88d8c5cbb0e898f4c"
+    },
+    {
+      "country": "myanmar",
+      "source_url": "https://data.humdata.org/dataset/myanmar-daily-port-activity-data-and-shipment-estimates",
+      "sha256": "1667937fcddbec69677ef493a6d2fdc8ef1b4d392d284fc87e777ace1920a0f4"
+    },
+    {
+      "country": "philippines",
+      "source_url": "https://data.humdata.org/dataset/philippines-daily-port-activity-data-and-shipment-estimates",
+      "sha256": "c89075b02caf4bd4e935c81e7daa93a6efba0ab28e9f91693c2351e9cc856b10"
+    },
+    {
+      "country": "singapore",
+      "source_url": "https://data.humdata.org/dataset/singapore-daily-port-activity-data-and-shipment-estimates",
+      "sha256": "b0e7f74a70fdefaf98d8fda4f432f9e899f7c001e2639f4e053cdcdcb4c45d64"
+    },
+    {
+      "country": "thailand",
+      "source_url": "https://data.humdata.org/dataset/thailand-daily-port-activity-data-and-shipment-estimates",
+      "sha256": "185ded41da3449d9668315aebd05a1d6b59bbf3f2f6b96b3937e80f42afad5a2"
+    },
+    {
+      "country": "timor-leste",
+      "source_url": "https://data.humdata.org/dataset/timor-leste-daily-port-activity-data-and-shipment-estimates",
+      "sha256": "08671bf1e25e2311d4fa755c3e66ca5b1b1437e866d80228d9374e71262e36b9"
+    },
+    {
+      "country": "viet-nam",
+      "source_url": "https://data.humdata.org/dataset/viet-nam-daily-port-activity-data-and-shipment-estimates",
+      "sha256": "97daf4eb6472dd25f99a16fb63432943edc949965aa83526391c6d8326f20365"
+    }
+  ],
+  "download_dates_local": [
+    "2026-10-18"
+  ],
+  "download_gap_calendar_days": 16,
+  "port_selection": {
+    "train_start": "2019-01-01",
+    "train_end": "2024-12-31",
+    "validation_end": "2025-12-31",
+    "test_end": "2026-10-02",
+    "validation_start": "2025-01-01",
+    "test_start": "2026-01-01",
+    "train_calendar_days": 2192,
+    "selected_ports": 137,
+    "activity_groups": {
+      "high": 67,
+      "low": 23,
+      "medium": 47
+    },
+    "country_retention": [
+      {
+        "country_iso3": "BRN",
+        "candidate_ports": 2,
+        "retained_ports": 1,
+        "excluded_ports": 1
+      },
+      {
+        "country_iso3": "IDN",
+        "candidate_ports": 101,
+        "retained_ports": 71,
+        "excluded_ports": 30
+      },
+      {
+        "country_iso3": "KHM",
+        "candidate_ports": 1,
+        "retained_ports": 1,
+        "excluded_ports": 0
+      },
+      {
+        "country_iso3": "MMR",
+        "candidate_ports": 2,
+        "retained_ports": 1,
+        "excluded_ports": 1
+      },
+      {
+        "country_iso3": "MYS",
+        "candidate_ports": 41,
+        "retained_ports": 24,
+        "excluded_ports": 17
+      },
+      {
+        "country_iso3": "PHL",
+        "candidate_ports": 26,
+        "retained_ports": 14,
+        "excluded_ports": 12
+      },
+      {
+        "country_iso3": "SGP",
+        "candidate_ports": 3,
+        "retained_ports": 3,
+        "excluded_ports": 0
+      },
+      {
+        "country_iso3": "THA",
+        "candidate_ports": 13,
+        "retained_ports": 7,
+        "excluded_ports": 6
+      },
+      {
+        "country_iso3": "TLS",
+        "candidate_ports": 3,
+        "retained_ports": 1,
+        "excluded_ports": 2
+      },
+      {
+        "country_iso3": "VNM",
+        "candidate_ports": 18,
+        "retained_ports": 14,
+        "excluded_ports": 4
+      }
+    ],
+    "min_active_share": 0.2,
+    "min_cargo_coverage": 1.0,
+    "activity_group_cuts": [
+      0.3333333333333333,
+      0.6666666666666666
+    ],
+    "frozen": false
+  }
+}
