@@ -1,0 +1,20 @@
+{
+  "note": "Template only. Record real team agreement for dates and explicit candidate settings in experiment.json; do not invent approval of a candidate or its validation findings.",
+  "train_start": "2019-01-01",
+  "train_end": null,
+  "validation_end": null,
+  "test_end": null,
+  "time_split_agreement": {
+    "status": "pending",
+    "agreed_by": [],
+    "agreed_on": null
+  },
+  "port_selection": {
+    "status": "pending",
+    "candidate_active_share_from_protocol": 0.2,
+    "min_active_share": null,
+    "min_cargo_coverage": null,
+    "activity_group_cuts": null,
+    "active_share_denominator": "all_training_calendar_days"
+  }
+}

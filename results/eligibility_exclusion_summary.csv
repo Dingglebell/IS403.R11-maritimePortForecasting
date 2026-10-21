@@ -1,0 +1,6 @@
+split,exclusion_reason,rows
+excluded,origin_reserved_for_test,210
+excluded,target_beyond_validation_end,1260
+excluded,target_crosses_train_validation_boundary,1260
+train,incomplete_past_window,5670
+validation,outside_common_training_eligibility_set,26207

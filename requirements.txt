@@ -1,0 +1,5 @@
+# Task 1 preparation and EDA, tested with Python 3.12.14.
+# Task 2/3 model dependencies will be added by their owners when tested.
+numpy==2.3.5
+pandas==3.0.1
+matplotlib==3.11.2

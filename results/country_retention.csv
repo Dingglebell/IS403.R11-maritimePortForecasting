@@ -1,0 +1,11 @@
+country_iso3,candidate_ports,retained_ports,excluded_ports
+BRN,2,1,1
+IDN,101,71,30
+KHM,1,1,0
+MMR,2,1,1
+MYS,41,24,17
+PHL,26,14,12
+SGP,3,3,0
+THA,13,7,6
+TLS,3,1,2
+VNM,18,14,4
