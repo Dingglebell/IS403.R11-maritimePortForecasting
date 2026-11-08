@@ -1,11 +1,17 @@
-# Local data and large generated artifacts
+# Local datasets
 data/*
 !data/README.md
-!data/manifest.example.csv
 !data/data_dictionary.md
-results/*
-!results/README.md
-# Explicitly add reviewed small result tables or figures with git add -f.
+!data/source_manifest.csv
+!data/example.csv
+
+# Large generated outputs; compact reports, metrics and figures can be committed.
+results/*predictions*.csv
+results/*keys.csv
+results/*exclusions*.csv
+results/zero_runs.csv
+
+# Environments, caches and local credentials
 .venv/
 venv/
 __pycache__/

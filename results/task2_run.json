@@ -1,0 +1,31 @@
+{
+  "status": "validation_pipeline_run; shared_rule_freeze_pending",
+  "test_scored": false,
+  "panel_sha256": "f8c402ed90ad70d851b0cf82e4c57d1d810cc3faa3bac958efd4bf68dd96d9b6",
+  "experiment_sha256": "a022a2af5bc52e3a98c72dd3dad6db2f213c97f53e2c4e73a52c0386c4c1e492",
+  "learning_table_sha256": "d54d3cbe252556c79f10a17cb376b376b9918f72c546d0980471c1ef16f58c5a",
+  "validation_keys_sha256": "97845d7f3713f4c817859d0d4829aa366e6fbdf776e9c1f8716883ff271ccc38",
+  "clipping_in_working_output": "none",
+  "clipping_configured": null,
+  "cohort_rule": "complete_training_coverage",
+  "cohort_status": "Task1 recommendation; joint Task2 review pending",
+  "train_rows": 453180,
+  "validation_rows_per_model": 75390,
+  "ports": 210,
+  "cutoffs": {
+    "train_start": "2019-01-01",
+    "train_end": "2024-12-31",
+    "validation_end": "2025-12-31",
+    "test_end": "2026-10-02"
+  },
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "3.0.1"
+  },
+  "code_sha256": {
+    "features.py": "ec04950afbbfcfc6f9b5a61e9bcedfd54213bb77112e4cc1e1b814967706573e",
+    "baselines.py": "5bbef4887fc81101d01cbee4ce5f14df79d5154b1cb8ed741978869baa043c03",
+    "run_task2.py": "9be8eb2ed5cc297fb8c6a8575d3c0819b4458632c27d938368a8c99c3c3f2102"
+  }
+}
