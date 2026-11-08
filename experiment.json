@@ -1,5 +1,5 @@
 {
-  "status": "proposed_not_run",
+  "status": "task1_validation_design; joint_review_before_final_freeze",
   "target": "next_7_calendar_days_total_cargo_tonnes",
   "horizon_days": 7,
   "history_days": [
@@ -7,13 +7,33 @@
     28
   ],
   "random_seed": 42,
-  "train_end": null,
-  "validation_end": null,
-  "test_end": null,
-  "port_selection": "decide_from_training_data",
+  "train_start": "2019-01-01",
+  "train_end": "2024-12-31",
+  "validation_end": "2025-12-31",
+  "test_end": "2026-10-02",
+  "date_agreement": "Han reports Dinh and Hieu agreed these cutoffs in this task conversation",
+  "port_selection": {
+    "handoff_rule": "complete_training_coverage",
+    "candidate_active_share": 0.2,
+    "activity_group_cuts": [0.3333333333333333, 0.6666666666666666],
+    "status": "Task1 recommendation; joint Task2 review pending"
+  },
   "primary_selection_metric": "validation_MAE",
   "pool_ports": true,
   "refit_before_test": false,
   "clip_negative_predictions": null,
-  "data_snapshot_sha256": null
+  "data_snapshot_sha256": "fb4eee5b71de5692334abc45fadbee522fc32572e30ded15f2e6daeade137070",
+  "task1_diagnostic": {
+    "policies": ["retain_zero", "drop_zero_targets", "replace_zero_history", "active20"],
+    "model": "pooled_multivariate_OLS",
+    "primary_clipping": "nonnegative",
+    "sensitivity_clipping": "none",
+    "replacement": "previous_28_calendar_days_observed_positive_mean; fallback_zero; predictors_only",
+    "primary_cohort": "all_complete_training_ports; active20_compared_on_common_active20_subset",
+    "bootstrap_block_days": 28,
+    "bootstrap_replicates": 2000,
+    "test_scored": false,
+    "information_availability": "same-day historical-data scenario; release vintages unavailable",
+    "joint_review_status": "pending; no Task2 outputs available as confirmed by Han"
+  }
 }

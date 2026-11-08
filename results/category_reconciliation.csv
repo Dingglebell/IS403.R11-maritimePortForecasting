@@ -1,0 +1,4 @@
+measure,total_vs_5_categories_differing_rows,max_abs_difference,cargo_subtotal_vs_4_categories_differing_rows,max_abs_subtotal_difference
+portcalls,0,0,0,0
+import,69981,4,38947,3
+export,64500,4,35987,3

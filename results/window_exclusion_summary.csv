@@ -1,0 +1,5 @@
+split,exclusion_reason,rows
+excluded,origin_reserved_for_test,210
+excluded,target_beyond_validation,1260
+excluded,target_crosses_train_boundary,1260
+train,incomplete_history,5670

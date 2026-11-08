@@ -1,10 +1,11 @@
-# Planned implementation
+# Workflow implementation
 
-No modelling scripts have been implemented in this setup. Keep the workflow simple and add these files as tasks are completed.
+Task 1 cleaning and a separate audit/zero-policy diagnostic are implemented. Production features and model suites for the later tasks remain planned. The diagnostic is deliberately scoped to validation and does not score test or claim completion of Task 2.
 
 | File | Owner | Input → output |
 |---|---|---|
-| prepare_data.py | Hân | Local snapshot → data/ports_daily.csv and audit |
+| prepare_data.py | Hân | Local snapshot → data/ports_daily.csv |
+| analyze_task1.py | Hân | Snapshot + clean panel + experiment.json → dictionary-supporting audit, port metadata/lists, zero-policy validation and figures |
 | features.py | Định, Hiếu | Daily panel + experiment.json → learning_table.csv |
 | baselines.py | Định, Hiếu | Learning table → naïve and regression predictions |
 | models.py | Huy, Tiến | Same learning table → RF/HGB predictions and settings |
