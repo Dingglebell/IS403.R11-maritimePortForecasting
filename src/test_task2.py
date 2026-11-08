@@ -7,6 +7,7 @@ import pandas as pd
 
 from features import build_learning_table, FEATURES
 from baselines import predict_baselines, fit_regression, score_predictions
+from check_features import interval_sums, independent_windows, compare_table
 
 CONFIG = {
     "horizon_days": 7, "history_days": [7, 28], "train_start": "2024-10-01",
@@ -28,6 +29,29 @@ def panel():
 
 
 class Task2Checks(unittest.TestCase):
+    def test_independent_window_review_detects_an_off_by_one_feature(self):
+        p = panel()
+        table, _, _ = build_learning_table(p, CONFIG)
+        expected, _, _ = independent_windows(p, CONFIG)
+        self.assertTrue(compare_table(table, expected).passed.all())
+        table.loc[0, "cargo_7d"] += 1
+        with self.assertRaises(AssertionError):
+            compare_table(table, expected)
+
+    def test_independent_interval_sums_preserve_missing_and_zero(self):
+        sums = interval_sums([0., 2., np.nan, 4.], np.array([0, 0, 1, -1]), np.array([1, 2, 4, 2]))
+        np.testing.assert_allclose(sums, [0., 2., np.nan, np.nan], equal_nan=True)
+
+    def test_future_change_cannot_change_features_at_the_forecast_origin(self):
+        p = panel()
+        t = pd.Timestamp("2025-01-10")
+        original, _, _ = build_learning_table(p, CONFIG)
+        p.loc[p.date.gt(t), ["import_tonnes", "cargo_tonnes", "portcalls"]] = 9e8
+        changed, _, _ = build_learning_table(p, CONFIG)
+        columns = [*FEATURES, "activity_group"]
+        pd.testing.assert_frame_equal(original.loc[original.origin_date.eq(t), columns],
+                                       changed.loc[changed.origin_date.eq(t), columns])
+
     def test_calendar_values_are_hand_summed_and_ports_isolated(self):
         p = panel()
         table, _, _ = build_learning_table(p, CONFIG)
