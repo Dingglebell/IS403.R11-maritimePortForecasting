@@ -45,10 +45,10 @@ The full clean panel has 594,720 rows. The recommended `selected_ports.csv` reta
 Định and Hiếu can run features, chronological splits and the four baseline models with the reviewed clean panel:
 
 ```bash
-python src/run_task2.py
+python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv
 ```
 
-This verifies the Task 1 panel hash, builds the common train/validation table, and exports predictions, metrics and a run record. It scores validation only and reports raw and nonnegative variants while the shared rules remain pending. Read the [Task 2 pipeline and work split](docs/task2_pipeline.md) and the [English methods draft](docs/features_baselines.md).
+This uses Hân's supplied processed CSV, verifies the Task 1 panel hash, builds the common train/validation table, and exports predictions, metrics and a run record. If you instead place the canonical clean panel at `data/ports_daily.csv`, omit `--panel`. It scores validation only and reports raw and nonnegative variants while the shared rules remain pending. Read the [Task 2 pipeline and work split](docs/task2_pipeline.md) and the [English methods draft](docs/features_baselines.md).
 
 ## Team
 

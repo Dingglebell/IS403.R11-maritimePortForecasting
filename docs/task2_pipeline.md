@@ -22,23 +22,25 @@ Install the pinned environment once:
 python -m pip install -r requirements.txt
 ```
 
-Obtain `data/ports_daily.csv` from Hân's frozen handoff. If you have the ten original raw CSVs instead, reproduce the clean panel first:
+Hân's supplied folders are `data/chua_xu_ly/` for raw CSVs and `data/da_xu_ly/` for processed data. The supplied `data/da_xu_ly/ports_daily.csv` and all ten raw CSVs match the reviewed Task 1 hashes. Use the processed CSV directly; the Excel copy is not needed by the pipeline.
+
+If you need to rebuild a canonical clean panel from the raw files:
 
 ```bash
-python src/prepare_data.py --input-dir "PATH_TO_RAW_CSV_FOLDER" --output data/ports_daily.csv
+python src/prepare_data.py --input-dir data/chua_xu_ly --output data/ports_daily.csv
 ```
 
-Replace the placeholder with your actual folder. The one-command runner verifies that the clean panel's hash matches Task 1's reviewed record; revised downloads require a separate audit.
+The one-command runner verifies that the clean panel's hash matches Task 1's reviewed record; revised downloads require a separate audit. To run directly from Hân's supplied processed folder:
 
 ```bash
 python -m unittest discover -s src -p 'test_*.py' -v
-python src/run_task2.py
+python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv
 ```
 
 To work separately, Định can export the table and Hiếu can run baselines from it:
 
 ```bash
-python src/features.py
+python src/features.py --panel data/da_xu_ly/ports_daily.csv
 python src/baselines.py
 ```
 
