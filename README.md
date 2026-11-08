@@ -40,6 +40,16 @@ Read the [Vietnamese handoff guide](docs/task1_handoff.md), [complete data dicti
 
 The full clean panel has 594,720 rows. The recommended `selected_ports.csv` retains 210 complete-training-coverage IDs, with the alternative 137-port rule recorded as a candidate flag. Shared rule approval is not assumed. See the [audit](results/data_audit.md) and [validation tables](results/zero_validation.md). Do not compare scores from different populations to select a rule. CSV datasets remain local per repository policy.
 
+## Run Task 2
+
+Định and Hiếu can run features, chronological splits and the four baseline models with the reviewed clean panel:
+
+```bash
+python src/run_task2.py
+```
+
+This verifies the Task 1 panel hash, builds the common train/validation table, and exports predictions, metrics and a run record. It scores validation only and reports raw and nonnegative variants while the shared rules remain pending. Read the [Task 2 pipeline and work split](docs/task2_pipeline.md) and the [English methods draft](docs/features_baselines.md).
+
 ## Team
 
 | Member | Main assignments |
