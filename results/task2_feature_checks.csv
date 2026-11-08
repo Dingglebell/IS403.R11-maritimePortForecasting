@@ -1,0 +1,12 @@
+check,rows_checked,passed,max_abs_error
+port_id,528570,True,0.0
+origin_date,528570,True,0.0
+country_iso3,528570,True,0.0
+activity_group,528570,True,0.0
+target_start,528570,True,0.0
+target_end,528570,True,0.0
+split,528570,True,0.0
+cargo_7d,528570,True,0.0
+calls_7d,528570,True,0.0
+cargo_mean_28d,528570,True,4.656612873077393e-10
+target_7d,528570,True,0.0

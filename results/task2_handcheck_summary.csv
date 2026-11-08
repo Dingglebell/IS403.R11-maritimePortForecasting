@@ -1,0 +1,2 @@
+port_id,origin_date,history_7d_start,history_28d_start,target_start,target_end,cargo_7d,calls_7d,cargo_28d_sum,cargo_mean_28d,target_7d,split
+port434,2024-12-31,2024-12-25,2024-12-04,2025-01-01,2025-01-07,332293,148,1373257,49044.892857142855,365344,validation
