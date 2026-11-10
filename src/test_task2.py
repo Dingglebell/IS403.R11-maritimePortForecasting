@@ -1,11 +1,16 @@
 """Task 2 checks with independent calendar and regression examples."""
 
 import unittest
+import json
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
 
 import numpy as np
 import pandas as pd
 
-from features import build_learning_table, FEATURES
+from features import build_learning_table, FEATURES, sha256
 from baselines import predict_baselines, fit_regression, score_predictions
 
 CONFIG = {
@@ -115,6 +120,52 @@ class Task2Checks(unittest.TestCase):
         b, fits_b = predict_baselines(changed, CONFIG)
         np.testing.assert_array_equal(a.y_pred, b.y_pred)
         self.assertEqual(fits_a, fits_b)
+
+    def test_multivariate_recovers_known_function_and_uses_training_scaling(self):
+        rng = np.random.default_rng(42)
+        f = pd.DataFrame(rng.uniform(1, 100, size=(100, 3)), columns=FEATURES)
+        f["target_7d"] = 11 + f[FEATURES].to_numpy() @ np.array([2., 3., 4.])
+        pred, fit = fit_regression(f.iloc[:80], f.iloc[80:], FEATURES)
+        np.testing.assert_allclose(pred, f.target_7d.iloc[80:], rtol=1e-12)
+        np.testing.assert_allclose(fit["training_mean"], f.iloc[:80][FEATURES].mean())
+        self.assertEqual(fit["rank"], 4)
+
+    def test_baseline_rejects_origins_without_required_history(self):
+        table, _, _ = build_learning_table(panel(), CONFIG)
+        table.loc[0, "origin_date"] = pd.Timestamp(CONFIG["train_start"])
+        table.loc[0, "target_start"] = table.loc[0, "origin_date"] + pd.Timedelta(days=1)
+        table.loc[0, "target_end"] = table.loc[0, "origin_date"] + pd.Timedelta(days=7)
+        with self.assertRaisesRegex(ValueError, "28-day"):
+            predict_baselines(table, CONFIG)
+
+    def test_standalone_cli_exports_aligned_variants_and_reproducible_record(self):
+        table, _, _ = build_learning_table(panel(), CONFIG)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            table.to_csv(root / "table.csv", index=False)
+            (root / "config.json").write_text(json.dumps(CONFIG), encoding="utf-8")
+            completed = subprocess.run([sys.executable, str(Path(__file__).with_name("baselines.py")),
+                "--table", str(root / "table.csv"), "--experiment", str(root / "config.json"),
+                "--results-dir", str(root)], capture_output=True, text=True)
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            raw = pd.read_csv(root / "baseline_none_predictions.csv")
+            clipped = pd.read_csv(root / "baseline_nonnegative_predictions.csv")
+            pd.testing.assert_frame_equal(raw.drop(columns=["y_pred", "clipping"]),
+                                          clipped.drop(columns=["y_pred", "clipping"]))
+            np.testing.assert_allclose(clipped.y_pred, np.maximum(raw.y_pred, 0))
+            scores = pd.read_csv(root / "baseline_metrics.csv")
+            for rule, forecasts in [("none", raw), ("nonnegative", clipped)]:
+                for model, f in forecasts.groupby("model"):
+                    actual = scores.loc[scores.model.eq(model) & scores.clipping.eq(rule)].iloc[0]
+                    errors = (f.y_true - f.y_pred).to_numpy()
+                    self.assertAlmostEqual(actual.MAE, np.mean(np.abs(errors)))
+                    self.assertAlmostEqual(actual.RMSE, np.sqrt(np.mean(errors ** 2)))
+                    self.assertAlmostEqual(actual.WAPE_pct, 100 * np.abs(errors).sum() / f.y_true.sum())
+            record = json.loads((root / "baseline_run.json").read_text(encoding="utf-8"))
+            self.assertFalse(record["test_scored"])
+            self.assertEqual(record["learning_table_sha256"], sha256(root / "table.csv"))
+            for name, digest in record["output_sha256"].items():
+                self.assertEqual(digest, sha256(root / name))
 
     def test_metrics_zero_denominator_and_test_split_guard(self):
         f = pd.DataFrame({"model": "example", "feature_set": "cargo_only", "port_id": ["A", "B"],
