@@ -1,0 +1,24 @@
+{
+  "review_date": "2026-11-10",
+  "learning_table_sha256": "d54d3cbe252556c79f10a17cb376b376b9918f72c546d0980471c1ef16f58c5a",
+  "validation_keys_sha256": "97845d7f3713f4c817859d0d4829aa366e6fbdf776e9c1f8716883ff271ccc38",
+  "train_rows": 453180,
+  "validation_rows_per_model": 75390,
+  "models": 4,
+  "ports": 210,
+  "all_model_keys_and_labels_match": true,
+  "clipped_equals_max_raw_zero": true,
+  "metrics_independently_recomputed": true,
+  "metrics_match_previous_run_rtol": 1e-12,
+  "handcheck_port": "port434",
+  "handcheck_origin": "2024-12-31",
+  "handcheck_values": {
+    "cargo_7d": 332293.0,
+    "calls_7d": 148.0,
+    "cargo_mean_28d": 49044.892857142855,
+    "target_7d": 365344.0
+  },
+  "regression_designs_full_rank": true,
+  "test_scored": false,
+  "shared_rules_status": "pending_joint_review"
+}
