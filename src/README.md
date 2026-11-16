@@ -20,4 +20,6 @@ Task 1/2 use the pinned `requirements.txt`. Baseline regressions use NumPy ordin
 
 Task 2 commands and role assignments are in `docs/task2_pipeline.md`. From the repository root, use `python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv` with Hân's current handoff. `features.py` and `baselines.py` also run separately for development.
 
+Task 3 starts with `docs/task3_start.md`. The validation metric helper in `baselines.py` scores each `(model, feature_set)` separately; pass one clipping variant at a time.
+
 Before handoff, check a hand-worked seven-day label, a missing-date case, port isolation and boundary leakage. Verify the metrics against a tiny known example and WAPE’s zero-denominator case. Document checks beside each pull request.

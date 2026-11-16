@@ -44,6 +44,8 @@ Multivariate linear regression improves validation MAE by about 20.39% relative 
 
 ## Handoff to Huy and Tiến
 
+The final Task 3 readiness pass reproduces this workflow from a fresh source folder with only the frozen clean CSV supplied as local data. All 34 tests pass, including the feature-variant scoring regression. Follow [the Task 3 start guide](task3_start.md) for responsibilities, feature comparisons and export checks.
+
 From the repository root, with Hân's clean panel and the pinned environment:
 
 ```bash
