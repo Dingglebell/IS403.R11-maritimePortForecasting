@@ -46,6 +46,19 @@ python src/baselines.py
 
 The combined command adds snapshot verification and a run record. Both commands use the same functions. The lower-level commands support development and do not independently verify the source snapshot hash.
 
+## Step 2 review for Định and Hiếu
+
+The feature implementation and its independent review are ready. Run these commands to regenerate the table and review evidence without fitting models:
+
+```bash
+python src/features.py --panel data/da_xu_ly/ports_daily.csv
+python src/check_features.py
+```
+
+The checker recomputes every feature and target using cumulative sums, separately from the rolling-window implementation. It checks training-only selection, all excluded rows and the validation-key hash against Task 1. The default hand check uses Hải Phòng (`port434`) at origin 31 December 2024; 35 daily rows and inclusion flags are exported to `data/task2_handcheck_daily.csv` locally.
+
+Read [the Step 2 report](../results/task2_feature_review.md), [hand-check summary](../results/task2_handcheck_summary.csv) and [boundary examples](../results/task2_boundary_examples.csv). All 528,570 learning rows and 8,400 exclusions pass the independent checks. Hiếu should review the arithmetic and boundary examples before accepting this handoff. The cohort/clipping decision remains Step 4.
+
 ## Definitions to check together
 
 At origin t, features use observations through t only: cargo sum over t−6…t, calls sum over t−6…t and mean daily cargo over t−27…t. The label is the original cargo sum over t+1…t+7. All windows are computed separately per port on a daily calendar. Missing measurements exclude the affected windows; genuine zeros stay.
@@ -84,7 +97,7 @@ MAE and RMSE are tonnes per seven-day target. WAPE is `100 × total absolute err
 
 While `clip_negative_predictions` is null, the working prediction file contains raw forecasts and both variants are reported for discussion. This is a temporary output convention, not agreement on the final rule. Set the shared field to `true` or `false` after joint review. An explicit `--clipping none` or `--clipping nonnegative` overrides the output variant for that run and is recorded in the run record. Do not choose a different clipping variant per model without documenting a new design.
 
-The verified first run contains 453,180 training rows and 75,390 validation rows per model across 210 ports. Its learning rows match Task 1's calendar windows, and its validation-key hash is identical. See `results/baseline_validation.md` for the provisional comparison. All 27 repository tests pass.
+The verified first run contains 453,180 training rows and 75,390 validation rows per model across 210 ports. Its learning rows match Task 1's calendar windows, and its validation-key hash is identical. See `results/baseline_validation.md` for the provisional comparison. With the independent Step 2 checks added, all 30 repository tests pass.
 
 ## Completion and pull request
 

@@ -7,6 +7,7 @@ Task 1 cleaning and its audit/zero-policy diagnostic are implemented. Task 2 now
 | prepare_data.py | Hân | Implemented: raw CSVs → clean daily panel |
 | analyze_task1.py | Hân | Implemented: source metadata + panel → audit, port lists and zero-policy validation |
 | features.py | Định, Hiếu | Implemented: panel + experiment.json → common learning table |
+| check_features.py | Định, Hiếu | Implemented: independent full-table calculation, hand check and boundary review |
 | baselines.py | Định, Hiếu | Implemented: learning table → four baseline predictions and metrics |
 | run_task2.py | Định, Hiếu | Implemented: verified clean panel → complete Task 2 validation run |
 | models.py | Huy, Tiến | Planned: RF/HGB predictions and settings |

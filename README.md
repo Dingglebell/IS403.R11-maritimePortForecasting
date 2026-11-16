@@ -66,6 +66,8 @@ This uses Hân's supplied processed CSV, verifies the Task 1 panel hash, builds 
 
 The verified run has 453,180 training rows and 75,390 validation rows per model across 210 ports. See the [baseline comparison](results/baseline_validation.md). Small result summaries and figures are tracked; large datasets, prediction files and row-level exclusion lists are ignored so `git add -A` stages the shareable project files.
 
+Step 2's [feature and split review](results/task2_feature_review.md) includes an independent check of every learning row, a Hải Phòng hand calculation and concrete boundary exclusions. It is ready for Hiếu's peer review; reproduce it with the commands in the [Task 2 guide](docs/task2_pipeline.md#step-2-review-for-định-and-hiếu).
+
 ## Team
 
 | Member | Main assignments |
