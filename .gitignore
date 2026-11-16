@@ -1,4 +1,5 @@
 # Local datasets
+task2_step2/
 data/*
 !data/README.md
 !data/data_dictionary.md
