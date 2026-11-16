@@ -2,12 +2,13 @@
 
 import argparse
 import json
+import platform
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-from features import FEATURES, KEYS, validate_config
+from features import FEATURES, KEYS, sha256, validate_config
 
 MODEL_FEATURES = {
     "seasonal_naive": "cargo_only",
@@ -38,7 +39,7 @@ def fit_regression(train, validation, columns, quadratic=False):
 
 
 def check_learning_table(table, config):
-    _, a, b = validate_config(config)
+    start, a, b = validate_config(config)
     required = {*KEYS, "country_iso3", "activity_group", *FEATURES,
                 "target_start", "target_end", "target_7d", "split"}
     if required - set(table) or table.empty:
@@ -47,6 +48,10 @@ def check_learning_table(table, config):
         raise ValueError("Duplicate keys or missing learning-table values")
     if not table.split.isin(["train", "validation"]).all():
         raise ValueError("Baseline runner accepts train and validation only; test is reserved")
+    if not table.origin_date.eq(table.origin_date.dt.normalize()).all():
+        raise ValueError("Expected daily midnight origin dates")
+    if not table.origin_date.ge(start + pd.Timedelta(days=27)).all():
+        raise ValueError("Origin precedes the required 28-day training history")
     values = table[[*FEATURES, "target_7d"]].to_numpy(float)
     if not np.isfinite(values).all() or (values < 0).any():
         raise ValueError("Invalid feature or target values")
@@ -149,10 +154,33 @@ def main():
     p.add_argument("--results-dir", type=Path, default=Path("results"))
     p.add_argument("--clipping", choices=["none", "nonnegative"], default=None)
     a = p.parse_args()
+    if not a.table.is_file():
+        p.error(f"Missing learning table: {a.table}. Obtain Dinh's feature export or run src/features.py first")
     table = pd.read_csv(a.table, parse_dates=["origin_date", "target_start", "target_end"],
                         dtype={"port_id": "string", "country_iso3": "string"})
     config = json.loads(a.experiment.read_text(encoding="utf-8"))
-    export_baselines(table, config, a.results_dir, a.clipping)
+    predictions, _, _ = export_baselines(table, config, a.results_dir, a.clipping)
+    record = {
+        "status": "baseline_validation_run; shared_rule_freeze_pending",
+        "test_scored": False,
+        "learning_table_sha256": sha256(a.table),
+        "experiment_sha256": sha256(a.experiment),
+        "code_sha256": {name: sha256(Path(__file__).with_name(name))
+                        for name in ["features.py", "baselines.py"]},
+        "train_rows": int(table.split.eq("train").sum()),
+        "validation_rows_per_model": int(table.split.eq("validation").sum()),
+        "ports": int(predictions.port_id.nunique()),
+        "clipping_in_working_output": predictions.clipping.iloc[0],
+        "clipping_configured": config.get("clip_negative_predictions"),
+        "cutoffs": {k: config[k] for k in
+                    ["train_start", "train_end", "validation_end", "test_end"]},
+        "versions": {"python": platform.python_version(), "numpy": np.__version__,
+                     "pandas": pd.__version__},
+        "output_sha256": {name: sha256(a.results_dir / name) for name in [
+            "validation_predictions.csv", "baseline_none_predictions.csv",
+            "baseline_nonnegative_predictions.csv", "baseline_metrics.csv", "baseline_fits.json"]},
+    }
+    (a.results_dir / "baseline_run.json").write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

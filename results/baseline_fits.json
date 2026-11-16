@@ -1,0 +1,68 @@
+{
+  "seasonal_naive": {
+    "rule": "last_seven_calendar_days_cargo_total"
+  },
+  "linear_univariate": {
+    "input_columns": [
+      "cargo_7d"
+    ],
+    "quadratic": false,
+    "training_mean": [
+      206235.94441943598
+    ],
+    "training_scale": [
+      1064780.927931493
+    ],
+    "coefficients": [
+      206403.11124056674,
+      1057377.406472159
+    ],
+    "rank": 2,
+    "training_rows": 453180
+  },
+  "linear_multivariate": {
+    "input_columns": [
+      "cargo_7d",
+      "calls_7d",
+      "cargo_mean_28d"
+    ],
+    "quadratic": false,
+    "training_mean": [
+      206235.94441943598,
+      21.335965841387527,
+      29429.467272228634
+    ],
+    "training_scale": [
+      1064780.927931493,
+      66.81582487257096,
+      151631.21577256484
+    ],
+    "coefficients": [
+      206403.1112405667,
+      101885.82089814634,
+      9346.931704602335,
+      949654.4910908474
+    ],
+    "rank": 4,
+    "training_rows": 453180
+  },
+  "polynomial_degree2": {
+    "input_columns": [
+      "cargo_7d"
+    ],
+    "quadratic": true,
+    "training_mean": [
+      206235.94441943598
+    ],
+    "training_scale": [
+      1064780.927931493
+    ],
+    "coefficients": [
+      204978.01093284163,
+      1038969.9496818323,
+      1425.1003077246714
+    ],
+    "rank": 3,
+    "training_rows": 453180
+  }
+}
