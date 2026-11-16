@@ -131,9 +131,9 @@ def export_baselines(table, config, results_dir=Path("results"), clipping=None):
                              date_format="%Y-%m-%d", lineterminator="\n")
     scores = pd.concat(metrics, ignore_index=True)
     scores.to_csv(results_dir / "baseline_metrics.csv", index=False, lineterminator="\n")
-    (results_dir / "baseline_fits.json").write_text(json.dumps(fits, indent=2) + "\n", encoding="utf-8")
+    (results_dir / "baseline_fits.json").write_text(json.dumps(fits, indent=2) + "\n", encoding="utf-8", newline="\n")
     best = scores.loc[scores.working_output].sort_values("MAE").iloc[0]
-    lines = ["# Task 2 validation results", "", "Validation only. The shared cohort and clipping rule still require team agreement.",
+    lines = ["# Task 2 validation results", "", "Validation only. Decision status: " + config.get("task2_decision", {}).get("status", "pending") + ".",
              "", f"Working output clipping: {clipping}. Both raw and nonnegative variants are exported separately.",
              "", "| Model | Clipping | Rows | MAE tonnes | RMSE tonnes | WAPE percent |",
              "|---|---|---:|---:|---:|---:|"]
@@ -142,7 +142,7 @@ def export_baselines(table, config, results_dir=Path("results"), clipping=None):
     lines += ["", f"Lowest validation MAE in the working output: {best['model']}. This is not a test conclusion.",
               "", "All four models use identical port-origin rows. Negative raw forecasts are disclosed; no test scores are generated.",
               "Daily seven-day target windows overlap. Do not sum them as independent weekly cargo totals.", ""]
-    (results_dir / "baseline_validation.md").write_text("\n".join(lines), encoding="utf-8")
+    (results_dir / "baseline_validation.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
     print(scores[["model", "clipping", "n_rows", "MAE", "RMSE", "WAPE_pct"]].to_string(index=False))
     return variants[clipping], scores, fits
 
@@ -161,7 +161,7 @@ def main():
     config = json.loads(a.experiment.read_text(encoding="utf-8"))
     predictions, _, _ = export_baselines(table, config, a.results_dir, a.clipping)
     record = {
-        "status": "baseline_validation_run; shared_rule_freeze_pending",
+        "status": "baseline_validation_run", "decision_status": config.get("task2_decision", {}).get("status", "pending"),
         "test_scored": False,
         "learning_table_sha256": sha256(a.table),
         "experiment_sha256": sha256(a.experiment),
@@ -180,7 +180,7 @@ def main():
             "validation_predictions.csv", "baseline_none_predictions.csv",
             "baseline_nonnegative_predictions.csv", "baseline_metrics.csv", "baseline_fits.json"]},
     }
-    (a.results_dir / "baseline_run.json").write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+    (a.results_dir / "baseline_run.json").write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

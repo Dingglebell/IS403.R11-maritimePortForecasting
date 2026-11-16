@@ -4,7 +4,7 @@ IS403.R11 · Group 5 · 2026
 
 Predict each port’s **total estimated cargo volume over the next 7 days**, in tonnes, from daily IMF PortWatch history. Cargo is `import + export`. Compare seasonal naïve, three regression baselines, Random Forest and Histogram Gradient Boosting. SARIMA/SARIMAX with oil prices is optional.
 
-**Status:** Task 1 data preparation and Task 2's feature and four-baseline pipeline are implemented and validated. Định and Hiếu still need to review the shared cohort and clipping rule. No test scores have been produced. Raw data, learning tables and large prediction files stay local.
+**Status:** Task 1 data preparation and Task 2's feature and four-baseline pipeline are implemented and validated. Task 2 completion review fixes the shared 210-port cohort and nonnegative forecast rule; see [the completion handoff](docs/task2_completion.md). No test scores have been produced. Raw data, learning tables and large prediction files stay local.
 
 ## Start here
 
@@ -62,11 +62,11 @@ python -m unittest discover -s src -p 'test_*.py' -v
 python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv
 ```
 
-This uses Hân's supplied processed CSV, verifies the Task 1 panel hash, builds the common train/validation table, and exports predictions, metrics and a run record. If you instead place the canonical clean panel at `data/ports_daily.csv`, omit `--panel`. It scores validation only and reports raw and nonnegative variants while the shared rules remain pending. Read the [Task 2 pipeline and work split](docs/task2_pipeline.md) and the [English methods draft](docs/features_baselines.md).
+This uses Hân's supplied processed CSV, verifies the Task 1 panel hash, builds the common train/validation table, and exports predictions, metrics and a run record. If you instead place the canonical clean panel at `data/ports_daily.csv`, omit `--panel`. It scores validation only and reports raw and nonnegative variants with the completed comparison rules. Read the [Task 2 pipeline and work split](docs/task2_pipeline.md) and the [English methods draft](docs/features_baselines.md).
 
 The verified run has 453,180 training rows and 75,390 validation rows per model across 210 ports. See the [baseline comparison](results/baseline_validation.md). Small result summaries and figures are tracked; large datasets, prediction files and row-level exclusion lists are ignored so `git add -A` stages the shareable project files.
 
-Step 2's [feature and split review](results/task2_feature_review.md) includes an independent check of every learning row, a Hải Phòng hand calculation and concrete boundary exclusions. It is ready for Hiếu's peer review; reproduce it with the commands in the [Task 2 guide](docs/task2_pipeline.md#step-2-review-for-định-and-hiếu).
+Step 2's [feature and split review](results/task2_feature_review.md) includes an independent check of every learning row, a Hải Phòng hand calculation and concrete boundary exclusions. The completion review includes Hiếu's baseline evidence; reproduce it with the commands in the [Task 2 guide](docs/task2_pipeline.md#step-2-review-for-định-and-hiếu).
 
 ## Team
 

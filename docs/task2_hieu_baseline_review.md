@@ -1,5 +1,7 @@
 # Bước 3 — Fit four baselines (Hiếu)
 
+Cập nhật 16/11: Bản dưới đây là hồ sơ kiểm tra ngày 10/11. Quyết định và kết quả bàn giao cuối cùng xem `task2_completion.md`.
+
 Ngày kiểm tra: 10/11/2026. Phạm vi: baseline và validation; chưa chốt quy tắc chung ở bước 4.
 
 ## Phần Định đã bàn giao
