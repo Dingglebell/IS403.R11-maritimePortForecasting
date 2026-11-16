@@ -1,11 +1,11 @@
 # Task 2 Step 2 feature and split review
 
-The implementation and independent checks are complete. Hiếu's peer review is pending; the shared cohort/clipping decision remains Step 4.
+The implementation and independent checks are complete. Decision status: frozen_for_model_comparison. See docs/task2_completion.md for the completion review.
 
 Panel SHA256: `f8c402ed90ad70d851b0cf82e4c57d1d810cc3faa3bac958efd4bf68dd96d9b6`.
 Learning-table SHA256: `d54d3cbe252556c79f10a17cb376b376b9918f72c546d0980471c1ef16f58c5a`.
 Validation-key SHA256: `97845d7f3713f4c817859d0d4829aa366e6fbdf776e9c1f8716883ff271ccc38` (matches Task 1).
-Checker SHA256: `697107c137cf7db70f979c7cf0efaf94a075c5214b72d48c8360311d8732305d`.
+Checker SHA256: `1ef9b8bf8bc43a85d57143a64381dcf7199dd74be5b012796ad98b931404d198`.
 
 ## Independent checks
 

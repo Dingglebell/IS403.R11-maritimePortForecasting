@@ -1,6 +1,6 @@
 # Workflow implementation
 
-Task 1 cleaning and its audit/zero-policy diagnostic are implemented. Task 2 now has shared features, four baselines and a one-command runner. Both stages score validation only; final cohort/clipping decisions and test evaluation remain pending.
+Task 1 cleaning and its audit/zero-policy diagnostic are implemented. Task 2 now has shared features, four baselines and a one-command runner. Both stages score validation only; the final 210-port cohort and nonnegative forecast rule are recorded, while test evaluation remains reserved.
 
 | File | Owner | Status and purpose |
 |---|---|---|

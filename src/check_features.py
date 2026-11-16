@@ -172,7 +172,7 @@ def main():
     first, last = table.loc[table.split.eq("train"), "origin_date"].agg(["min", "max"])
     vf, vl = table.loc[table.split.eq("validation"), "origin_date"].agg(["min", "max"])
     report = ["# Task 2 Step 2 feature and split review", "",
-        "The implementation and independent checks are complete. Hiếu's peer review is pending; the shared cohort/clipping decision remains Step 4.", "",
+        "The implementation and independent checks are complete. Decision status: " + config.get("task2_decision", {}).get("status", "pending") + ". See docs/task2_completion.md for the completion review.", "",
         f"Panel SHA256: `{sha256(a.panel)}`.", f"Learning-table SHA256: `{sha256(a.table)}`.",
         f"Validation-key SHA256: `{key_hash}` (matches Task 1).",
         f"Checker SHA256: `{sha256(__file__)}`.", "", "## Independent checks", "",
@@ -196,7 +196,7 @@ def main():
         "", "## Hiếu review checklist", "", "1. Sum the flagged dates in the local hand-check CSV and compare the four values above.",
         "2. Inspect `task2_boundary_examples.csv`, especially 24/25/31 December 2024 and 24/25 December 2025.",
         "3. Confirm the validation-key hash is unchanged from Task 1 and review the cohort proposal before Step 3/4.", ""]
-    (a.results_dir / "task2_feature_review.md").write_text("\n".join(report), encoding="utf-8")
+    (a.results_dir / "task2_feature_review.md").write_text("\n".join(report), encoding="utf-8", newline="\n")
     print(f"PASS: {len(table):,} learning rows, {len(ports)} training port records, {len(excluded):,} exclusions.")
     print(summary.to_string(index=False))
 

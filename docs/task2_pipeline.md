@@ -1,6 +1,6 @@
 # Task 2 pipeline for Định and Hiếu
 
-Turn Hân's clean daily panel into one shared learning table, then compare seasonal naïve and three regressions on identical validation rows. The code is ready to run. Port selection and clipping remain proposals until you both agree; this pipeline does not freeze them or score test.
+Turn Hân's clean daily panel into one shared learning table, then compare seasonal naïve and three regressions on identical validation rows. The code is ready to run. The completion review records all 210 complete-training-coverage ports and a common nonnegative forecast rule. Test is reserved. See [the final handoff](task2_completion.md).
 
 ## Workflow and responsibilities
 
@@ -48,7 +48,7 @@ The combined command adds snapshot verification and a run record. Both commands 
 
 ## Step 2 review for Định and Hiếu
 
-The feature implementation and its independent review are ready. Run these commands to regenerate the table and review evidence without fitting models:
+The feature implementation and its independent review have passed completion review. Run these commands to regenerate the table and review evidence without fitting models:
 
 ```bash
 python src/features.py --panel data/da_xu_ly/ports_daily.csv
@@ -57,7 +57,7 @@ python src/check_features.py
 
 The checker recomputes every feature and target using cumulative sums, separately from the rolling-window implementation. It checks training-only selection, all excluded rows and the validation-key hash against Task 1. The default hand check uses Hải Phòng (`port434`) at origin 31 December 2024; 35 daily rows and inclusion flags are exported to `data/task2_handcheck_daily.csv` locally.
 
-Read [the Step 2 report](../results/task2_feature_review.md), [hand-check summary](../results/task2_handcheck_summary.csv) and [boundary examples](../results/task2_boundary_examples.csv). All 528,570 learning rows and 8,400 exclusions pass the independent checks. Hiếu should review the arithmetic and boundary examples before accepting this handoff. The cohort/clipping decision remains Step 4.
+Read [the Step 2 report](../results/task2_feature_review.md), [hand-check summary](../results/task2_handcheck_summary.csv) and [boundary examples](../results/task2_boundary_examples.csv). All 528,570 learning rows and 8,400 exclusions pass the independent checks. The completion review also checks Hiếu's Step 3 evidence. Step 4 decisions are recorded in `experiment.json` and `task2_completion.md`.
 
 ## Definitions to check together
 
@@ -95,12 +95,12 @@ Regressions use NumPy ordinary least squares; no new modelling dependency is nee
 
 MAE and RMSE are tonnes per seven-day target. WAPE is `100 × total absolute error / total actual cargo`; it is blank if the denominator is zero. Overlapping seven-day labels are dependent; these are descriptive validation comparisons.
 
-While `clip_negative_predictions` is null, the working prediction file contains raw forecasts and both variants are reported for discussion. This is a temporary output convention, not agreement on the final rule. Set the shared field to `true` or `false` after joint review. An explicit `--clipping none` or `--clipping nonnegative` overrides the output variant for that run and is recorded in the run record. Do not choose a different clipping variant per model without documenting a new design.
+The completed configuration sets `clip_negative_predictions` to `true`, consistently across models. `validation_predictions.csv` therefore contains nonnegative forecasts; the separate raw prediction file remains a sensitivity. The optional `--clipping` flag can reproduce another variant for diagnosis, but the recorded common comparison uses nonnegative forecasts.
 
-The verified first run contains 453,180 training rows and 75,390 validation rows per model across 210 ports. Its learning rows match Task 1's calendar windows, and its validation-key hash is identical. See `results/baseline_validation.md` for the provisional comparison. With the independent Step 2 checks added, all 30 repository tests pass.
+The verified first run contains 453,180 training rows and 75,390 validation rows per model across 210 ports. Its learning rows match Task 1's calendar windows, and its validation-key hash is identical. See `results/baseline_validation.md` for the completed baseline validation comparison. With the independent Step 2 checks added, all 33 combined repository tests pass.
 
 ## Completion and pull request
 
-Định signs off the calendar examples, split boundaries and training-only eligibility. Hiếu signs off all four model definitions, equal evaluation keys and the error calculations. Both review the English methods draft in `docs/features_baselines.md` and record the shared rule decision before final test work.
+Định signs off the calendar examples, split boundaries and training-only eligibility. Hiếu signs off all four model definitions, equal evaluation keys and the error calculations. The completion review and recorded shared decisions are in `docs/task2_completion.md`; the English method section is `docs/features_baselines.md`. Final test evaluation remains a later task.
 
 Raw data, the learning table and large prediction/exclusion files remain local under the repository's ignore rules. Publish only code, documentation and reviewed compact summaries. Share the frozen local artifacts with Huy/Tiến through the agreed group channel. Run `git add -A`, commit, push your task branch, and open a pull request into `main` following the Git guide.

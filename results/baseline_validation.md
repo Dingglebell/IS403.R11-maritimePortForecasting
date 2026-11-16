@@ -1,8 +1,8 @@
 # Task 2 validation results
 
-Validation only. The shared cohort and clipping rule still require team agreement.
+Validation only. Decision status: frozen_for_model_comparison.
 
-Working output clipping: none. Both raw and nonnegative variants are exported separately.
+Working output clipping: nonnegative. Both raw and nonnegative variants are exported separately.
 
 | Model | Clipping | Rows | MAE tonnes | RMSE tonnes | WAPE percent |
 |---|---|---:|---:|---:|---:|

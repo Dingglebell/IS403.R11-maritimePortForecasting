@@ -36,7 +36,7 @@ def main():
     keys_path = a.results_dir / "task2_validation_keys.csv"
     keys.to_csv(keys_path, index=False, date_format="%Y-%m-%d", lineterminator="\n")
     record = {
-        "status": "validation_pipeline_run; shared_rule_freeze_pending", "test_scored": False,
+        "status": "validation_pipeline_run", "decision_status": config.get("task2_decision", {}).get("status", "pending"), "test_scored": False,
         "panel_sha256": actual_hash, "experiment_sha256": sha256(a.experiment),
         "learning_table_sha256": sha256(a.table), "validation_keys_sha256": sha256(keys_path),
         "clipping_in_working_output": predictions.clipping.iloc[0],
@@ -50,8 +50,8 @@ def main():
         "code_sha256": {name: sha256(Path(__file__).with_name(name))
                         for name in ["features.py", "baselines.py", "run_task2.py"]},
     }
-    (a.results_dir / "task2_run.json").write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
-    print("Task 2 pipeline complete. Test untouched. Review cohort and clipping before freezing shared rules.")
+    (a.results_dir / "task2_run.json").write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8", newline="\n")
+    print("Task 2 validation complete. Test not scored. Decision status:", config.get("task2_decision", {}).get("status", "pending"))
 
 
 if __name__ == "__main__":
