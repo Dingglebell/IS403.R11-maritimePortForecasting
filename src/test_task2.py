@@ -34,6 +34,17 @@ def panel():
 
 
 class Task2Checks(unittest.TestCase):
+    def test_metrics_keep_feature_variants_of_the_same_model_separate(self):
+        f = pd.DataFrame({"model": ["RF"] * 4,
+            "feature_set": ["cargo_only", "cargo_only", "all_three", "all_three"],
+            "port_id": ["A", "B", "A", "B"],
+            "y_true": [0., 10., 0., 10.], "y_pred": [0., 8., 4., 6.]})
+        scores = score_predictions(f).set_index("feature_set")
+        self.assertEqual(len(scores), 2)
+        self.assertEqual(scores.loc["cargo_only", "MAE"], 1.)
+        self.assertEqual(scores.loc["all_three", "MAE"], 4.)
+        self.assertTrue(scores.n_rows.eq(2).all())
+
     def test_independent_window_review_detects_an_off_by_one_feature(self):
         p = panel()
         table, _, _ = build_learning_table(p, CONFIG)

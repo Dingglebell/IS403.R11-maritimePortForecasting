@@ -193,9 +193,9 @@ def main():
     report += ["", "The first 27 origins per port lack a full 28-day history. "
         f"Origins {train_end-pd.Timedelta(days=6):%Y-%m-%d} through {train_end-pd.Timedelta(days=1):%Y-%m-%d} cross the training target boundary. "
         f"Origins {validation_end-pd.Timedelta(days=6):%Y-%m-%d} through {validation_end:%Y-%m-%d} need targets beyond validation and are excluded from this step.",
-        "", "## Hiếu review checklist", "", "1. Sum the flagged dates in the local hand-check CSV and compare the four values above.",
+        "", "## Reproduction checklist", "", "1. Sum the flagged dates in the local hand-check CSV and compare the four values above.",
         "2. Inspect `task2_boundary_examples.csv`, especially 24/25/31 December 2024 and 24/25 December 2025.",
-        "3. Confirm the validation-key hash is unchanged from Task 1 and review the cohort proposal before Step 3/4.", ""]
+        "3. Confirm the validation-key hash is unchanged from Task 1 and use the final comparison rules in experiment.json for Task 3.", ""]
     (a.results_dir / "task2_feature_review.md").write_text("\n".join(report), encoding="utf-8", newline="\n")
     print(f"PASS: {len(table):,} learning rows, {len(ports)} training port records, {len(excluded):,} exclusions.")
     print(summary.to_string(index=False))

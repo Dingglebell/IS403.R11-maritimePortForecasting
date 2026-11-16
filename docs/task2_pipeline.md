@@ -97,10 +97,10 @@ MAE and RMSE are tonnes per seven-day target. WAPE is `100 × total absolute err
 
 The completed configuration sets `clip_negative_predictions` to `true`, consistently across models. `validation_predictions.csv` therefore contains nonnegative forecasts; the separate raw prediction file remains a sensitivity. The optional `--clipping` flag can reproduce another variant for diagnosis, but the recorded common comparison uses nonnegative forecasts.
 
-The verified first run contains 453,180 training rows and 75,390 validation rows per model across 210 ports. Its learning rows match Task 1's calendar windows, and its validation-key hash is identical. See `results/baseline_validation.md` for the completed baseline validation comparison. With the independent Step 2 checks added, all 33 combined repository tests pass.
+The verified first run contains 453,180 training rows and 75,390 validation rows per model across 210 ports. Its learning rows match Task 1's calendar windows, and its validation-key hash is identical. See `results/baseline_validation.md` for the completed baseline validation comparison. The final handoff suite, including independent Step 2 and feature-variant scoring checks, has 34 passing tests.
 
 ## Completion and pull request
 
-Định signs off the calendar examples, split boundaries and training-only eligibility. Hiếu signs off all four model definitions, equal evaluation keys and the error calculations. The completion review and recorded shared decisions are in `docs/task2_completion.md`; the English method section is `docs/features_baselines.md`. Final test evaluation remains a later task.
+The completion review checks the calendar examples, split boundaries, training-only eligibility, baseline definitions, evaluation keys and error calculations. Evidence and recorded decisions are in `docs/task2_completion.md`; the English method section is `docs/features_baselines.md`. This records the completed technical review without claiming individual member approvals. Final test evaluation remains a later task.
 
 Raw data, the learning table and large prediction/exclusion files remain local under the repository's ignore rules. Publish only code, documentation and reviewed compact summaries. Share the frozen local artifacts with Huy/Tiến through the agreed group channel. Run `git add -A`, commit, push your task branch, and open a pull request into `main` following the Git guide.

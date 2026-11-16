@@ -6,6 +6,8 @@ Predict each port’s **total estimated cargo volume over the next 7 days**, in 
 
 **Status:** Task 1 data preparation and Task 2's feature and four-baseline pipeline are implemented and validated. Task 2 completion review fixes the shared 210-port cohort and nonnegative forecast rule; see [the completion handoff](docs/task2_completion.md). No test scores have been produced. Raw data, learning tables and large prediction files stay local.
 
+**Start Task 3:** Huy and Tiến should follow the [RF/HGB start guide](docs/task3_start.md). A final clean-folder reproduction passes all 34 tests, including a guard that keeps model feature variants separate when scoring.
+
 ## Start here
 
 1. Read [the project plan and next steps](docs/project_plan.md).
@@ -69,6 +71,8 @@ The verified run has 453,180 training rows and 75,390 validation rows per model 
 Step 2's [feature and split review](results/task2_feature_review.md) includes an independent check of every learning row, a Hải Phòng hand calculation and concrete boundary exclusions. The completion review includes Hiếu's baseline evidence; reproduce it with the commands in the [Task 2 guide](docs/task2_pipeline.md#step-2-review-for-định-and-hiếu).
 
 ## Team
+
+Huy and Tiến can now follow the [Task 3 start guide](docs/task3_start.md) for RF/HGB work. It lists the exact local input, reproduction commands, feature comparisons and output checks.
 
 | Member | Main assignments |
 |---|---|

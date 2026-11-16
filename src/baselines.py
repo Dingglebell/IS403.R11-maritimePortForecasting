@@ -93,10 +93,10 @@ def predict_baselines(table, config):
 def score_predictions(predictions):
     """Pooled MAE/RMSE/WAPE plus per-port mean MAE and row counts."""
     rows = []
-    for model, f in predictions.groupby("model", sort=False):
+    for (model, feature_set), f in predictions.groupby(["model", "feature_set"], sort=False):
         error = f.y_pred - f.y_true
         denom = f.y_true.sum()
-        rows.append({"model": model, "feature_set": f.feature_set.iloc[0], "split": "validation",
+        rows.append({"model": model, "feature_set": feature_set, "split": "validation",
             "n_rows": len(f), "n_ports": f.port_id.nunique(), "MAE": error.abs().mean(),
             "RMSE": np.sqrt((error ** 2).mean()),
             "WAPE_pct": 100 * error.abs().sum() / denom if denom else np.nan,
