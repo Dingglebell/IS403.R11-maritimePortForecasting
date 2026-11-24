@@ -1,0 +1,48 @@
+{
+  "status": "fixed_2026_test_comparison",
+  "split": "test",
+  "scope": "all_eligible",
+  "model_commit": "3670f89b97730b8eb12ae05050b12a0ce3d10b0e",
+  "freeze_sha256": "64547c8602752393325e018b1bb7567240738109948666c4b2ad22824cf68b2a",
+  "input_sha256": {
+    "experiment": "ef91ea001f0b3db1584050067a027630eb54c2767979de4893f8cb91f9c130b2",
+    "panel": "f8c402ed90ad70d851b0cf82e4c57d1d810cc3faa3bac958efd4bf68dd96d9b6",
+    "learning_table": "d54d3cbe252556c79f10a17cb376b376b9918f72c546d0980471c1ef16f58c5a",
+    "ports": "306240963af681bdeb38d7bbee6a040801558fd406dd69f79c2229296374f0bf",
+    "baseline_code": "2817aa09801eafb01bf3a8736d9bf56c463477ab89231b41e3adfa363bd5ca41",
+    "feature_code": "ec04950afbbfcfc6f9b5a61e9bcedfd54213bb77112e4cc1e1b814967706573e",
+    "evaluator_code": "36669da230262c53edaf77382437fce6a91080cd2256e46520201fd9c02f9f83",
+    "test_runner_code": "9ea37658eb92a30978981a1e0158e93e6fda8dbb684530ac393336d706fcc744",
+    "model_code": "55ec1b0b0e2f91c3b9d7906631612233a3b258260f61a35ed616cae4f17ec70f",
+    "model_config": "0c4fd2ea507f14542cb4795ab8692d852cec22d8a877b36a8b26a293a04df36a"
+  },
+  "train_rows": 453180,
+  "evaluated_ports": 210,
+  "variants": 12,
+  "scheduled_per_variant": 56490,
+  "evaluated_per_variant": 56490,
+  "excluded_per_variant": 0,
+  "zero_actual_per_variant": 14626,
+  "clipped_rows_across_variants": 10986,
+  "target_start": "2026-01-01",
+  "target_end": "2026-10-02",
+  "pool_ports": true,
+  "refit_on_validation": false,
+  "clipping": "nonnegative",
+  "python": "3.12.14",
+  "packages": {
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "scikit-learn": "1.9.1"
+  },
+  "output_sha256": {
+    "test_reference.csv": "ecacbb5be29ce6c6c10b6b10742df0a8f64e33202981808c5b7da0307f6c0e6c",
+    "test_predictions.csv": "e9e08a650cdfae5c718620ef803e25a9fd20c6866cf54dff648c87e9cead35fe",
+    "metrics.csv": "72143449a5ec7132a81cf69e0ad2327fd716d9e6a67c19d7b5075805561793a9",
+    "overall_comparison.csv": "0226cd4d6ee8a1a90406e946cc7650ddc59734e4ad54f73cc1a4e1ea9a021ebc",
+    "coverage.csv": "9b35563419e2f8f9215f6e2fbb80387b1e41a2d34a729b93979ce884309d4390",
+    "window_exclusions.csv": "1ce0b6d3223ce6376c84722ad27648f31edbb04bb8a9c2d9ce4ad06561ced1d7",
+    "highest_error_predictions.csv": "88391413ff372c6751e3ae58eedb35312ac6608d81081d5281c756b0a885a792",
+    "test_clipped_predictions.csv": "e3e0e7325191a21f34bfa45d2428055b49b8ba17a29f5cf1a85013888f426b81"
+  }
+}

@@ -1,0 +1,13 @@
+model,feature_set,expected_rows,forecast_rows,matched_rows,missing_rows,extra_rows,duplicate_rows,mismatched_actual_or_metadata_rows,invalid_prediction_rows
+hist_gradient_boosting,all_three,56490,56490,56490,0,0,0,0,0
+hist_gradient_boosting,cargo_calls,56490,56490,56490,0,0,0,0,0
+hist_gradient_boosting,cargo_mean28,56490,56490,56490,0,0,0,0,0
+hist_gradient_boosting,cargo_only,56490,56490,56490,0,0,0,0,0
+linear_multivariate,all_three,56490,56490,56490,0,0,0,0,0
+linear_univariate,cargo_only,56490,56490,56490,0,0,0,0,0
+polynomial_degree2,cargo_squared,56490,56490,56490,0,0,0,0,0
+random_forest,all_three,56490,56490,56490,0,0,0,0,0
+random_forest,cargo_calls,56490,56490,56490,0,0,0,0,0
+random_forest,cargo_mean28,56490,56490,56490,0,0,0,0,0
+random_forest,cargo_only,56490,56490,56490,0,0,0,0,0
+seasonal_naive,cargo_only,56490,56490,56490,0,0,0,0,0

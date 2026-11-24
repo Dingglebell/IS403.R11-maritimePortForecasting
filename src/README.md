@@ -1,6 +1,6 @@
 # Workflow implementation
 
-Task 1 cleaning and its audit/zero-policy diagnostic are implemented. Task 2 now has shared features, four baselines and a one-command runner. Both stages score validation only; the final 210-port cohort and nonnegative forecast rule are recorded, while test evaluation remains reserved.
+Task 1 covers cleaning and data audit. Task 2 builds the shared features and compares four baselines on validation. Task 5 uses the frozen 210-port cohort and forecast rule for the 2026 test run.
 
 | File | Owner | Status and purpose |
 |---|---|---|
@@ -11,7 +11,8 @@ Task 1 cleaning and its audit/zero-policy diagnostic are implemented. Task 2 now
 | baselines.py | Định, Hiếu | Implemented: learning table → four baseline predictions and metrics |
 | run_task2.py | Định, Hiếu | Implemented: verified clean panel → complete Task 2 validation run |
 | models.py | Huy, Tiến | Planned: RF/HGB predictions and settings |
-| evaluate.py | Hân, Định, Hiếu | Started: forecast alignment, coverage checks and evaluation tables |
+| evaluate.py | Định | Implemented: forecast alignment, coverage checks and evaluation tables |
+| run_task5_test.py | Định | Implemented: fixed model settings and aligned 2026 test results |
 | sarimax.py | Huy, Tiến | Optional, not implemented |
 
 Use functions for reading data, building features, fitting and exporting. Each script should accept explicit paths and configuration, avoid machine-specific absolute paths, and run from the repository root. Add exact commands to README only after they work.

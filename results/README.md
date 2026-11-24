@@ -1,6 +1,6 @@
 # Experiment outputs
 
-Task 1 audit and controlled validation results exist here. Start with `data_audit.md` and `zero_validation.md`; interpretation is in `docs/zero_handling.md`. `zero_policy_metrics.csv` includes overall, target, country, activity, port and seven weekly-phase results. `paired_block_sensitivity.csv` records paired date-block estimates. `task1_run.json` is the single compact machine-readable record of hashes, versions and coefficients. Figures are in `figures/`. No test scores exist.
+Task 1 audit and controlled validation results exist here. Start with `data_audit.md` and `zero_validation.md`. Interpretation is in `docs/zero_handling.md`. `zero_policy_metrics.csv` includes overall, target, country, activity, port and seven weekly-phase results. `paired_block_sensitivity.csv` records paired date-block estimates. `task1_run.json` records hashes, versions and coefficients. Figures are in `figures/`.
 
 Task 2's four-baseline validation comparison is in `baseline_validation.md` and `baseline_metrics.csv`. Split boundaries/counts are in `task2_split_summary.csv`; provenance and code/table/key hashes are in `task2_run.json`. Reproduce these with `python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv`. Large learning, prediction and exclusion files stay local. The final working output uses the common nonnegative rule; the raw sensitivity is also reported.
 
@@ -32,7 +32,28 @@ The first validation run used four baselines and eight selected tree variants fr
 
 Định reviews coverage, metric calculations and the scope of comparisons. Hiếu can use the validated forecasts and largest-error rows to prepare plots. Hân can use the country and activity rows to explain where planning decisions may differ by port. Estimated cargo can inform staffing, equipment and yard planning. Capacity or savings estimates require local productivity and capacity inputs.
 
-Use this validation run to check the workflow. Before the shared 2026 test run, record the reviewed model commit, selected settings, cohort, forecast rule and evaluation scope. The evaluator can score a separately prepared test reference and forecasts with `--split test`. The current learning table contains training and validation rows.
+The validation run checked the evaluation workflow before the 2026 test. The learning table still contains training and validation rows. `run_task5_test.py` prepares the test reference and passes the resulting forecasts to the same evaluator.
+
+### Fixed 2026 test results
+
+Định's evaluation used each configuration fixed before test scoring in `task5_freeze.json`. Each of the 12 variants covered 56,490 port-origin rows across 210 ports, with zero exclusions, missing forecasts or duplicate keys. Test target dates run from 1 January to 2 October 2026. The primary table uses the four baselines and the three-input version of each tree model selected on 2025 validation MAE.
+
+| Model | MAE (tonnes) | RMSE (tonnes) | WAPE (%) | MAE change vs naïve (%) |
+|---|---:|---:|---:|---:|
+| Multivariate linear regression | 41,760.63 | 109,449.89 | 18.20 | −19.27 |
+| Random Forest | 44,210.86 | 130,533.72 | 19.27 | −14.53 |
+| Histogram Gradient Boosting | 44,403.01 | 140,827.35 | 19.35 | −14.16 |
+| Seasonal naïve | 51,726.09 | 129,106.54 | 22.54 | 0.00 |
+| Univariate linear regression | 51,951.97 | 128,777.22 | 22.64 | +0.44 |
+| Degree-2 regression | 52,325.51 | 128,748.33 | 22.80 | +1.16 |
+
+Multivariate regression had the lowest pooled MAE and RMSE. Both tree models improved MAE relative to seasonal naïve, while their higher RMSE highlights larger misses. Histogram Gradient Boosting had the lowest MAE among the primary models for the low- and medium-activity groups. Multivariate regression led the high-activity group and all seven non-overlapping origin phases. The pooled and macro-port MAE coincide because each port has 269 evaluated origins. Port metrics and group breakdowns show where the overall averages hide differences.
+
+The model predicts a seven-day total at each daily forecast origin, so consecutive target windows overlap. Interpret the metrics as forecast errors across those windows. WAPE is the total absolute error as a percentage of the sum of actuals across evaluated windows. It is undefined in the zero-actual group, which contains 14,626 windows per variant. Compare MAE and RMSE there. PortWatch cargo is estimated, and the evaluation assumes observations through the origin are available at forecast time.
+
+The [summary CSV](task5_test_summary.csv) contains the 12 overall comparisons and flags the primary rows. The [metrics CSV](metrics.csv) contains the country, activity, port, zero/positive-actual and phase breakdowns. The [coverage report](task5_test_coverage.csv) and [run record](task5_test_run.json) track alignment and checksums. The input features and labels were independently reconstructed for every test row, and overall scores were checked against the saved predictions. The suite has 40 passing tests.
+
+Hiếu can use the run's local `test_predictions.csv` and `highest_error_predictions.csv` for the figures. Hân can use the metrics and coverage report for interpretation. Estimated cargo can support staffing, equipment and yard planning. Turning forecasts into staffing hours or utilization requires local productivity and capacity data.
 
 ### Reproduce the fixed test comparison
 
