@@ -11,6 +11,8 @@ results/*predictions*.csv
 results/*keys.csv
 results/*exclusions*.csv
 results/zero_runs.csv
+results/task5_validation/
+results/task5_test/
 
 # Environments, caches and local credentials
 .venv/

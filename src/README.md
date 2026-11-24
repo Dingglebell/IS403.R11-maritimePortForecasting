@@ -11,7 +11,7 @@ Task 1 cleaning and its audit/zero-policy diagnostic are implemented. Task 2 now
 | baselines.py | Định, Hiếu | Implemented: learning table → four baseline predictions and metrics |
 | run_task2.py | Định, Hiếu | Implemented: verified clean panel → complete Task 2 validation run |
 | models.py | Huy, Tiến | Planned: RF/HGB predictions and settings |
-| evaluate.py | Hân, Định, Hiếu | Planned: final aligned comparison and figures |
+| evaluate.py | Hân, Định, Hiếu | Started: forecast alignment, coverage checks and evaluation tables |
 | sarimax.py | Huy, Tiến | Optional, not implemented |
 
 Use functions for reading data, building features, fitting and exporting. Each script should accept explicit paths and configuration, avoid machine-specific absolute paths, and run from the repository root. Add exact commands to README only after they work.

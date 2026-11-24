@@ -13,3 +13,23 @@ The diagnostic prediction file extends the protocol columns with `policy` and `c
 Suggested metric columns: model, feature_set, split, group_type, group_value, n_rows, n_ports, MAE, RMSE, WAPE_pct. Use NA for undefined WAPE. State units and sample counts on figures; export legible figures for the English paper and slides.
 
 `baseline_review.json` preserves Hiếu's historical 10 November check. Final settings and freshly reproduced output hashes are in `task2_run.json`, `baseline_run.json` and `experiment.json`.
+
+## Task 5 evaluation
+
+Start with the frozen Task 2 learning table and nonnegative validation forecasts. `src/evaluate.py` checks each model and feature set against the same reference rows. If a key, actual, country or target window differs, or a forecast is missing, duplicated or invalid, the evaluator reports the affected counts and stops before scoring.
+
+Run against baselines and, once available locally, the Task 3 tree forecasts:
+
+```bash
+python src/evaluate.py --forecasts results/validation_predictions.csv results/model_validation_predictions.csv
+```
+
+The baseline file comes from `src/run_task2.py` and the tree file comes from `src/models.py` on the model handoff branch. To check the baseline export alone, pass only its file. For the optional SARIMA comparison, pass `results/extension_predictions.csv` as a third file and add `--activity-group high`. That scopes every model to the training-defined high-activity ports and requires complete coverage within the subset.
+
+The command writes `metrics.csv`, `coverage.csv`, `highest_error_predictions.csv` and `evaluation_run.json` under `results/task5_validation/all_eligible/` or `results/task5_validation/high/`. These folders stay local. Set `--out-dir` to use a different writable folder. Metrics include pooled and mean-per-port MAE, RMSE, WAPE and bias. Country, activity, port and zero/positive-actual results use the same aligned rows. A blank WAPE means total actual cargo was zero. Weekly phases reuse every seventh origin, with phase 0 anchored at the first permitted origin for the split.
+
+The first validation run used four baselines and eight selected tree variants from model commit `3670f89`. It matched 75,390 validation rows per variant over all 210 ports and 24,053 per variant over the 67-port high-activity subset. Multivariate regression had the lowest pooled MAE in both scopes.
+
+Định reviews coverage, metric calculations and the scope of comparisons. Hiếu can use the validated forecasts and largest-error rows to prepare plots. Hân can use the country and activity rows to explain where planning decisions may differ by port. Estimated cargo can inform staffing, equipment and yard planning. Capacity or savings estimates require local productivity and capacity inputs.
+
+Use this validation run to check the workflow. Before the shared 2026 test run, record the reviewed model commit, selected settings, cohort, forecast rule and evaluation scope. The evaluator can score a separately prepared test reference and forecasts with `--split test`. The current learning table contains training and validation rows.
