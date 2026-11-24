@@ -22,4 +22,6 @@ Task 2 commands and role assignments are in `docs/task2_pipeline.md`. From the r
 
 Task 3 starts with `docs/task3_start.md`. The validation metric helper in `baselines.py` scores each `(model, feature_set)` separately; pass one clipping variant at a time.
 
+`run_task5_test.py` recreates the frozen Task 5 test forecasts with the reviewed Task 2 learning table and Task 3 model handoff. See the Task 5 commands in `results/README.md`.
+
 Before handoff, check a hand-worked seven-day label, a missing-date case, port isolation and boundary leakage. Verify the metrics against a tiny known example and WAPE’s zero-denominator case. Document checks beside each pull request.

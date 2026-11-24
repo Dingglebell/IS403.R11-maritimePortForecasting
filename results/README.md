@@ -33,3 +33,19 @@ The first validation run used four baselines and eight selected tree variants fr
 Định reviews coverage, metric calculations and the scope of comparisons. Hiếu can use the validated forecasts and largest-error rows to prepare plots. Hân can use the country and activity rows to explain where planning decisions may differ by port. Estimated cargo can inform staffing, equipment and yard planning. Capacity or savings estimates require local productivity and capacity inputs.
 
 Use this validation run to check the workflow. Before the shared 2026 test run, record the reviewed model commit, selected settings, cohort, forecast rule and evaluation scope. The evaluator can score a separately prepared test reference and forecasts with `--split test`. The current learning table contains training and validation rows.
+
+### Reproduce the fixed test comparison
+
+`task5_freeze.json` records the analysis plan before test scoring. The primary table compares six approaches on the same 210 ports. The six other forest or boosting feature sets appear as feature sensitivity rows. Task 4's SARIMA result stays with its 67-port validation analysis.
+
+Use the frozen clean panel and Task 2 learning table. If you need the learning table, run `python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv`. In Git Bash, retrieve the exact reviewed Task 3 model source and settings and run the test comparison:
+
+```bash
+git fetch origin task3-4-models-extension
+git archive --format=zip -o data/task34-handoff.zip 3670f89b97730b8eb12ae05050b12a0ce3d10b0e src/models.py results/model_config.json
+python -m zipfile -e data/task34-handoff.zip data/task34-handoff
+python -m pip install -r requirements.txt scikit-learn==1.9.1
+python src/run_task5_test.py --model-handoff data/task34-handoff
+```
+
+The runner checks the file hashes and package versions in the freeze record. It fits the saved settings with the 2019–2024 training rows and uses observations through each origin for predictors. It scores the original cargo over the next seven days. It saves the forecasts, metrics, coverage, window exclusions and run hashes under `results/task5_test/`. Keep the row-level data local and use `--out-dir` with a new writable folder for a reproduction.
