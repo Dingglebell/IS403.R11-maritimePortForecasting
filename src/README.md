@@ -10,13 +10,13 @@ Task 1 cleaning and its audit/zero-policy diagnostic are implemented. Task 2 now
 | check_features.py | Định, Hiếu | Implemented: independent full-table calculation, hand check and boundary review |
 | baselines.py | Định, Hiếu | Implemented: learning table → four baseline predictions and metrics |
 | run_task2.py | Định, Hiếu | Implemented: verified clean panel → complete Task 2 validation run |
-| models.py | Huy, Tiến | Planned: RF/HGB predictions and settings |
+| models.py | Huy, Tiến | Implemented: learning table → RF/HGB tuning on validation MAE, predictions and config (Task 3) |
 | evaluate.py | Hân, Định, Hiếu | Planned: final aligned comparison and figures |
-| sarimax.py | Huy, Tiến | Optional, not implemented |
+| sarimax.py | Huy, Tiến | Implemented: per-port SARIMA on the training-defined high-activity subset; SARIMAX with oil is no-go (Task 4) |
 
 Use functions for reading data, building features, fitting and exporting. Each script should accept explicit paths and configuration, avoid machine-specific absolute paths, and run from the repository root. Add exact commands to README only after they work.
 
-Task 1/2 use the pinned `requirements.txt`. Baseline regressions use NumPy ordinary least squares. RF/HGB will need scikit-learn and the optional SARIMAX branch may need statsmodels; add tested versions when those implementations begin.
+All tasks use the pinned `requirements.txt`. Baseline regressions use NumPy ordinary least squares; RF/HGB use scikit-learn and SARIMA uses statsmodels. Methods and results are in `docs/ml_methods.md` (Task 3) and `docs/extension_decision.md` (Task 4).
 
 Task 2 commands and role assignments are in `docs/task2_pipeline.md`. From the repository root, use `python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv` with Hân's current handoff. `features.py` and `baselines.py` also run separately for development.
 

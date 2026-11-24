@@ -2,3 +2,6 @@
 pandas==3.0.1
 numpy==2.3.5
 matplotlib==3.11.2
+# Task 3 (RF/HGB) and Task 4 (SARIMA).
+scikit-learn==1.9.1
+statsmodels==0.15.0
