@@ -2,6 +2,8 @@
 
 The two source tables use different dates. Preserve both: stage dates are initial progress targets; assignment dates are working handoff deadlines for this repository. This is a scheduling proposal to confirm at the next meeting, not a claim that the instructor changed a deadline. Dates are interpreted as 2026 from the project term.
 
+Định's test evaluation is ready for Hân and Hiếu to use in Task 5. See the [handoff and current results](../results/README.md#task-5-handoff-to-hân-and-hiếu).
+
 ## Project stages
 
 | Stage | Main work | Expected result | Original target |
@@ -26,7 +28,7 @@ The two source tables use different dates. Preserve both: stage dates are initia
 
 Stage 1 has no separate named assignment row. Proposed owners are the whole group for scope decisions and Huy/Tiến for initial literature notes. Their full Related Work handoff remains 1 December. Stage 4 has two separate task briefs because the source assigns core models and the optional extension separately.
 
-## Immediate next steps
+## Original milestones
 
 1. **17–20 October:** Định coordinates repository access and a short scope meeting. Each member clones the repository and submits one small practice change. The owner adds the four teammates after collecting their GitHub usernames.
 2. **By 20 October:** the group confirms the schedule, forecast availability convention, core country scope and cutoff dates. Huy/Tiến provide short notes on the three papers. Leave Laos national trade, weather and other targets outside the core port forecast.
@@ -41,4 +43,4 @@ Stage 1 has no separate named assignment row. Proposed owners are the whole grou
 - Exact train/validation/test calendar boundaries and training-only port eligibility rule.
 - Who integrates the paper and slides, reviewer rotation, and treatment of the conflicting stage targets.
 
-The current setup contains no training data or results. Snapshot counts in the introductions are claims to reproduce, not assumptions for the final paper.
+Use the verified [data audit](../results/data_audit.md) and [2026 test results](../results/README.md#fixed-2026-test-results) for the paper. The introductions contain preliminary snapshot counts.

@@ -2,7 +2,7 @@
 
 Task 1 audit and controlled validation results exist here. Start with `data_audit.md` and `zero_validation.md`. Interpretation is in `docs/zero_handling.md`. `zero_policy_metrics.csv` includes overall, target, country, activity, port and seven weekly-phase results. `paired_block_sensitivity.csv` records paired date-block estimates. `task1_run.json` records hashes, versions and coefficients. Figures are in `figures/`.
 
-Task 2's four-baseline validation comparison is in `baseline_validation.md` and `baseline_metrics.csv`. Split boundaries/counts are in `task2_split_summary.csv`; provenance and code/table/key hashes are in `task2_run.json`. Reproduce these with `python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv`. Large learning, prediction and exclusion files stay local. The final working output uses the common nonnegative rule; the raw sensitivity is also reported.
+Task 2's four-baseline validation comparison is in `baseline_validation.md` and `baseline_metrics.csv`. Split boundaries and counts are in `task2_split_summary.csv`. Provenance and hashes are in `task2_run.json`. Reproduce these with `python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv`. `validation_predictions.csv` is the canonical nonnegative export. The rerun also generates an identical `baseline_nonnegative_predictions.csv` and a raw sensitivity file.
 
 Step 2's independent feature/split review is in `task2_feature_review.md`. `task2_feature_checks.csv` records the full-table comparisons; `task2_handcheck_summary.csv` and `task2_boundary_examples.csv` provide concrete review examples. Reproduce them with `python src/features.py --panel data/da_xu_ly/ports_daily.csv` followed by `python src/check_features.py`. The combined completion review is recorded in `docs/task2_completion.md`.
 
@@ -53,19 +53,30 @@ The model predicts a seven-day total at each daily forecast origin, so consecuti
 
 The [summary CSV](task5_test_summary.csv) contains the 12 overall comparisons and flags the primary rows. The [metrics CSV](metrics.csv) contains the country, activity, port, zero/positive-actual and phase breakdowns. The [coverage report](task5_test_coverage.csv) and [run record](task5_test_run.json) track alignment and checksums. The input features and labels were independently reconstructed for every test row, and overall scores were checked against the saved predictions. The suite has 40 passing tests.
 
-Hiếu can use the run's local `test_predictions.csv` and `highest_error_predictions.csv` for the figures. Hân can use the metrics and coverage report for interpretation. Estimated cargo can support staffing, equipment and yard planning. Turning forecasts into staffing hours or utilization requires local productivity and capacity data.
+### Task 5 handoff to Hân and Hiếu
+
+Định's evaluation is ready for the figures and discussion. Use the `task5-validation-evaluation` branch in [PR #8](https://github.com/Dingglebell/IS403.R11-maritimePortForecasting/pull/8) for the result tables.
+
+| Owner | Start with | Deliverable |
+|---|---|---|
+| Hân | [Metrics by group and port](metrics.csv), [overall comparison](task5_test_summary.csv) and [coverage](task5_test_coverage.csv) | English discussion in `docs/results_discussion.md`. Explain error differences by country, activity and observed cargo, with implications for staffing, equipment and yards. Quantifying capacity needs local operating data. |
+| Hiếu | The local `test_predictions.csv` and `highest_error_predictions.csv` from the frozen run, plus the [overall comparison](task5_test_summary.csv) | Figures comparing observed and predicted seven-day totals, model errors and high-error cases. Use the `primary_comparison` flag for the main table and note that consecutive target windows overlap. |
+
+Định can share the row-level files through the group's data channel. Check the original shared files against the checksums in the [run record](task5_test_run.json). A fresh run reproduced all 677,880 forecast rows and aggregate metrics. Small floating-point differences in a fresh export can change its file checksum. The three Task 5 owners review the finished figures and discussion against the saved evaluation.
 
 ### Reproduce the fixed test comparison
 
 `task5_freeze.json` records the analysis plan before test scoring. The primary table compares six approaches on the same 210 ports. The six other forest or boosting feature sets appear as feature sensitivity rows. Task 4's SARIMA result stays with its 67-port validation analysis.
 
-Use the frozen clean panel and Task 2 learning table. If you need the learning table, run `python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv`. In Git Bash, retrieve the exact reviewed Task 3 model source and settings and run the test comparison:
+Use the frozen clean panel and Task 2 learning table. In Git Bash, retrieve the exact reviewed Task 3 model source and settings, install the dependencies, and run the test comparison:
 
 ```bash
 git fetch origin task3-4-models-extension
 git archive --format=zip -o data/task34-handoff.zip 3670f89b97730b8eb12ae05050b12a0ce3d10b0e src/models.py results/model_config.json
 python -m zipfile -e data/task34-handoff.zip data/task34-handoff
 python -m pip install -r requirements.txt scikit-learn==1.9.1
+# Generate the learning table if needed.
+python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv
 python src/run_task5_test.py --model-handoff data/task34-handoff
 ```
 
