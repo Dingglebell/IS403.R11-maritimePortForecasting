@@ -13,6 +13,8 @@ Task 1 covers cleaning and data audit. Task 2 builds the shared features and com
 | models.py | Huy, Tiến | Model handoff commit `3670f89`: RF/HGB training and settings |
 | evaluate.py | Định | Implemented: forecast alignment, coverage checks and evaluation tables |
 | run_task5_test.py | Định | Implemented: fixed model settings and aligned 2026 test results |
+| report_task5_han.py | Hân | Reproduces the supporting Task 5 tables and diagnostic figures |
+| recreate_task5_figures.py | Task 5 integration | Recreates the four views selected for Hiếu's main figures |
 | sarimax.py | Huy, Tiến | Model handoff commit `3670f89`: SARIMA validation on 67 ports |
 
 Use functions for reading data, building features, fitting and exporting. Each script should accept explicit paths and configuration, avoid machine-specific absolute paths, and run from the repository root. Add exact commands to README only after they work.

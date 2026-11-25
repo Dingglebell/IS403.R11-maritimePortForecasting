@@ -51,7 +51,7 @@ Multivariate regression had the lowest pooled MAE and RMSE. Both tree models imp
 
 The model predicts a seven-day total at each daily forecast origin, so consecutive target windows overlap. Interpret the metrics as forecast errors across those windows. WAPE is the total absolute error as a percentage of the sum of actuals across evaluated windows. It is undefined in the zero-actual group, which contains 14,626 windows per variant. Compare MAE and RMSE there. PortWatch cargo is estimated, and the evaluation assumes observations through the origin are available at forecast time.
 
-The [summary CSV](task5_test_summary.csv) contains the 12 overall comparisons and flags the primary rows. The [metrics CSV](metrics.csv) contains the country, activity, port, zero/positive-actual and phase breakdowns. The [coverage report](task5_test_coverage.csv) and [run record](task5_test_run.json) track alignment and checksums. The input features and labels were independently reconstructed for every test row, and overall scores were checked against the saved predictions. The suite has 40 passing tests.
+The [summary CSV](task5_test_summary.csv) contains the 12 overall comparisons and flags the primary rows. The [metrics CSV](metrics.csv) contains the country, activity, port, zero/positive-actual and phase breakdowns. The [coverage report](task5_test_coverage.csv) and [run record](task5_test_run.json) track alignment and checksums. The input features and labels were independently reconstructed for every test row, and overall scores were checked against the saved predictions. The Task 5 integration suite passed all 44 tests.
 
 ### Task 5 handoff to Hân and Hiếu
 
@@ -63,6 +63,27 @@ The [summary CSV](task5_test_summary.csv) contains the 12 overall comparisons an
 | Hiếu | The local `test_predictions.csv` and `highest_error_predictions.csv` from the frozen run, plus the [overall comparison](task5_test_summary.csv) | Figures comparing observed and predicted seven-day totals, model errors and high-error cases. Use the `primary_comparison` flag for the main table and note that consecutive target windows overlap. |
 
 Định can share the row-level files through the group's data channel. Check the original shared files against the checksums in the [run record](task5_test_run.json). A fresh run reproduced all 677,880 forecast rows and aggregate metrics. Small floating-point differences in a fresh export can change its file checksum. The three Task 5 owners review the finished figures and discussion against the saved evaluation.
+
+### Task 5 figure set
+
+[Hân's discussion](../docs/results_discussion.md) uses these four figures supplied by Hiếu. The original images are stored in `results/figures/`.
+
+| Order | Figure | Evidence |
+|---|---|---|
+| 1 | [Overall MAE](figures/task5_overall_mae.png) | Six prespecified rows from the frozen [test summary](task5_test_summary.csv). RMSE and WAPE are reported in the table above. |
+| 2 | [MAE by port activity](figures/task5_activity_mae.png) | Percent reduction from seasonal naïve within each training-defined activity group. The three displayed models use all inputs. |
+| 3 | [Observed and predicted cargo](figures/task5_observed_predicted.png) | Hải Phòng and the lower middle port by mean observed cargo (port2380). Regression and naïve forecasts use the same daily origins and observed seven-day targets. |
+| 4 | [Large forecast misses](figures/task5_large_errors.png) | One maximum absolute regression error per port, with the five largest drawn from the full aligned forecast file. |
+
+[Hân's comparison tables](task5_han/tables.md), [country chart](task5_han/country_comparison.png) and [detailed case histories](task5_han/observed_predicted_cases.png) support the paper discussion. The country chart expresses MAE **change** relative to naïve, while the main activity chart expresses MAE **reduction**.
+
+After the frozen run below, recreate the four views from the saved files with:
+
+```bash
+python src/recreate_task5_figures.py
+```
+
+Use `--predictions` and `--reference` if the forecast and reference CSVs are in another folder. This checks all metric rows and regenerates the plots in `results/task5_test/recreated_figures/`. The recreation uses the same selections and values as the supplied images. The saved PNGs preserve Hiếu's presentation styling.
 
 ### Reproduce the fixed test comparison
 

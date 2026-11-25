@@ -25,9 +25,9 @@ Multivariate regression has the lowest pooled MAE and RMSE among the primary mod
 
 These are outcomes of the fixed test comparison, not a new model-selection round. The results favour reporting the simple multivariate baseline as the strongest overall performer in this experiment. No model is retrained or routed to a country/port on the basis of these test results.
 
-![Overall errors](../results/task5_han/overall.png)
+![Overall test MAE](../results/figures/task5_overall_mae.png)
 
-*Figure 1. Same-row primary comparison. Each bar uses all 56,490 origins; smaller values are better. Scales are thousands of tonnes per seven-day target.*
+*Figure 1. Test MAE for the six prespecified primary configurations. Each bar uses the same 56,490 port-origin pairs across 210 ports. MAE is shown in thousands of tonnes per seven-day forecast. The table above gives RMSE and WAPE.*
 
 ## Country differences
 
@@ -54,9 +54,7 @@ Indonesia and Malaysia contribute 38.05% and 22.05% of multivariate regression's
 
 Tree underprediction in Singapore merits attention: mean country bias is −383,565.95 tonnes for Random Forest and −454,005.98 for HGB, compared with +12,280.39 for multivariate regression. This documents underprediction of the published target in this test period. It does not identify whether the cause is a particular vessel event, capacity constraint or structural change. Those explanations need additional evidence.
 
-![Country comparison](../results/task5_han/country_comparison.png)
-
-*Figure 2. MAE percentage change relative to naïve on each country's identical origins. Negative values improve on naïve; large positive changes in Timor-Leste reflect its small naïve error scale. These comparisons do not authorise country-specific test tuning.*
+The [supplementary country chart](../results/task5_han/country_comparison.png) uses signed MAE change relative to seasonal naïve within each country. Negative values show a reduction in MAE. Large positive changes in Timor-Leste reflect its small naïve error scale.
 
 ## Training activity and per-port results
 
@@ -70,9 +68,9 @@ HGB has the lowest MAE in low- and medium-activity groups, while multivariate re
 
 All 210 per-port results for each primary model are retained in [per_port.csv](../results/task5_han/per_port.csv). Multivariate regression, Random Forest and HGB beat naïve on port MAE for 189, 151 and 192 IDs respectively. Median port MAE is 15,559.68 tonnes for multivariate regression, 15,252.47 for Random Forest and 14,716.42 for HGB, compared with 20,039.82 for naïve. HGB's stronger median-port result is consistent with its strength in less active ports, while multivariate regression's smaller high-volume errors produce the best mean. Neither summary substitutes for the other. Thirteen ports have zero total actual cargo across all evaluated test windows, so their WAPE is undefined for every model; their MAE and RMSE remain reported.
 
-![Activity comparison](../results/task5_han/activity_comparison.png)
+![Test MAE reduction by activity group](../results/figures/task5_activity_mae.png)
 
-*Figure 3. MAE within groups defined entirely from training. The three panels use different vertical scales and retain all eligible ports and observed zero days.*
+*Figure 2. MAE reduction from seasonal naïve within each training-defined activity group. A bar of 26.4% means that model's test MAE was 26.4% lower than the naïve MAE on the same low-activity port-origin pairs. The displayed models use all three inputs, and each port contributes 269 origins. See the [supplementary activity chart](../results/task5_han/activity_comparison.png) for absolute MAE for all six primary configurations.*
 
 ## Zero-actual and positive-actual windows
 
@@ -93,13 +91,21 @@ On positive-target windows HGB's mean bias is −17,228.93 tonnes, compared with
 
 Task 1's validation study compared zero-handling policies. Task 5 evaluates models with the already-frozen retain-zero policy; it does not repeat that policy comparison on test. The current results therefore cannot justify changing the zero policy or claim that every published zero is physically correct.
 
+## Observed and predicted cargo
+
+![Observed and predicted cargo at Hải Phòng and port2380](../results/figures/task5_observed_predicted.png)
+
+*Figure 3. Observed and predicted seven-day totals for Hải Phòng (port434) and port2380. The latter is the lower of the two middle ports when the 210 ports are ordered by mean observed cargo across their test windows. Each panel shows 269 aligned daily forecast origins and uses its own vertical scale. Neighboring points cover overlapping seven-day windows.*
+
+Hải Phòng illustrates a port with sustained estimated cargo. At port2380 the series includes long troughs and short spikes, some of which multivariate regression underestimates. These two examples illustrate forecast behavior. The table and subgroup results provide the accuracy comparisons for the full test population.
+
 ## Large-error cases and overlapping forecasts
 
-The case figure is generated from saved forecasts using phase 0 only (every seventh permitted origin). It shows the three largest **per-port multivariate-regression MAEs**, selected retrospectively and labelled as diagnostic cases. They are not representative random examples or a new scoring cohort. Their selection does not affect the model settings or overall scores. The [case windows](../results/task5_han/case_windows.csv) preserve exact displayed values and dates; [largest_errors.csv](../results/task5_han/largest_errors.csv) records the three largest individual absolute-error windows per primary model, including signed error. Adjacent high-error windows may share cargo days and must not be called independent incidents.
+![Largest test misses at five different ports](../results/figures/task5_large_errors.png)
 
-![Observed and predicted case histories](../results/task5_han/observed_predicted_cases.png)
+*Figure 4. The five ports ranked highest by their maximum absolute multivariate-regression error. For each port, the figure shows its single largest miss. Dates are forecast origins. The 16 January Singapore forecast covers 17–23 January. The difference is calculated using the unrounded estimates.*
 
-*Figure 4. Published actual and four primary forecasts for the same seven-day targets at every seventh origin. Cases are port1201, port112 and port672, ranked by multivariate-regression port MAE; IDs refer to the source panel. Each point is a seven-day total, not a daily shipment or terminal-capacity measurement.*
+Hân's [supplementary forecast histories](../results/task5_han/observed_predicted_cases.png) answer a related question. They select port1201, port112 and port672 by the largest **per-port mean absolute errors** for multivariate regression and plot four primary forecasts at every seventh origin (phase 0). The [case windows](../results/task5_han/case_windows.csv) record the displayed observations and [largest_errors.csv](../results/task5_han/largest_errors.csv) records the largest individual windows by model. Both are retrospective diagnostics. Adjacent large misses may share six cargo days.
 
 At port1201, multivariate-regression MAE is 835,101.94 tonnes (WAPE 5.06%), versus 1,239,684 tonnes for Random Forest and 1,390,975 for HGB. Tree mean biases there are approximately −1.14 million and −1.33 million tonnes per target, compared with +37,680.09 for multivariate regression. This case helps explain the tree models' weaker large-error performance even when they improve typical errors at many other ports. We do not infer a real congestion event from forecast residuals.
 
@@ -133,4 +139,4 @@ Within these limits, multivariate linear regression provides the strongest overa
 
 The authoritative source tables are Định's `results/metrics.csv`, `task5_test_summary.csv`, `task5_test_coverage.csv` and `task5_test_run.json`. Hân's companion tables and figures are generated by `src/report_task5_han.py`; the script does not fit, tune or change a model. It checks the frozen metric hash, aligns saved forecasts against the test reference, and verifies all metric groups before producing the case plots. `results/task5_han/verification.json` records the source and reproduced-file hashes and the numeric comparison tolerance.
 
-The figures are supplied as a reviewable draft for Hiếu, whose assigned role includes final comparison plots. Định should review metric interpretation, and Hiếu should review figures and captions, before the group integrates this section. This handoff does not claim either teammate has already approved it. Reproduction commands and the precise remaining review steps are in [Hân's handoff guide](task5_han_handoff.md).
+The four main figures are Hiếu's supplied graphics. The [figure handoff](../results/README.md#task-5-figure-set) records their selection, authorship and the command to recreate their data views. Hân's [handoff guide](task5_han_handoff.md) documents her supporting analysis and outputs. The Task 5 owners can review the combined results and captions together.
