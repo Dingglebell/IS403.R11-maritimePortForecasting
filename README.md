@@ -4,7 +4,7 @@ IS403.R11 · Group 5 · 2026
 
 Predict each port’s **total estimated cargo volume over the next 7 days**, in tonnes, from daily IMF PortWatch history. Cargo is `import + export`. Compare seasonal naïve, three regression baselines, Random Forest and Histogram Gradient Boosting. SARIMA/SARIMAX with oil prices is optional.
 
-**Status:** The Task 5 evaluator has scored the fixed 2026 test comparison on 210 ports. The same 56,490 forecast origins were used for every model variant. The figures and discussion are in preparation. The [results guide](results/README.md#fixed-2026-test-results) links the comparison, coverage report and reproduction commands. Raw data, learning tables and row-level predictions stay local.
+**Status:** The Task 5 evaluator has scored the fixed 2026 test comparison on 210 ports. The same 56,490 forecast origins were used for every model variant. Hân's [results and discussion](docs/results_discussion.md), supporting figures and [Vietnamese handoff guide](docs/task5_han_handoff.md) are ready for team review. The [results guide](results/README.md#fixed-2026-test-results) links the comparison, coverage report and reproduction commands. Raw data, learning tables and row-level predictions stay local.
 
 The [Task 3 guide](docs/task3_start.md) describes the RF/HGB experiments. The Task 5 freeze record identifies the exact model handoff used for scoring.
 

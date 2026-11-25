@@ -1,0 +1,26 @@
+{
+  "rows": 677880,
+  "variants": 12,
+  "metric_rows_verified": 2796,
+  "case_ports": [
+    "port1201",
+    "port112",
+    "port672"
+  ],
+  "row_level_status": "aligned_and_all_metrics_reproduced",
+  "metrics_sha256": "72143449a5ec7132a81cf69e0ad2327fd716d9e6a67c19d7b5075805561793a9",
+  "predictions_sha256": "50e7a7b26ba8a8c643f3ae5eeac2cedcdcf375ee3d24649c62c4698ca448ee35",
+  "reference_sha256": "ecacbb5be29ce6c6c10b6b10742df0a8f64e33202981808c5b7da0307f6c0e6c",
+  "original_reference_bytes_match": true,
+  "original_prediction_sha256": "e9e08a650cdfae5c718620ef803e25a9fd20c6866cf54dff648c87e9cead35fe",
+  "original_prediction_bytes_match": false,
+  "freeze_sha256": "64547c8602752393325e018b1bb7567240738109948666c4b2ad22824cf68b2a",
+  "script_sha256": "ff020f03eec5c2e0874738fa8762380ee8909684808f31cd386342d2239d6f1d",
+  "attribution": "Han's descriptive analysis of Dinh's frozen Task 5 results; no fit/tuning in this script",
+  "tolerance": "metric comparison rtol=1e-8, atol=1e-6; all keys exact",
+  "packages": {
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "matplotlib": "3.11.2"
+  }
+}
