@@ -1,6 +1,6 @@
 # Workflow implementation
 
-Task 1 cleaning and its audit/zero-policy diagnostic are implemented. Task 2 now has shared features, four baselines and a one-command runner. Both stages score validation only; the final 210-port cohort and nonnegative forecast rule are recorded, while test evaluation remains reserved.
+Task 1 covers cleaning and data audit. Task 2 builds the shared features and compares four baselines on validation. Task 5 uses the frozen 210-port cohort and forecast rule for the 2026 test run.
 
 | File | Owner | Status and purpose |
 |---|---|---|
@@ -10,16 +10,21 @@ Task 1 cleaning and its audit/zero-policy diagnostic are implemented. Task 2 now
 | check_features.py | Định, Hiếu | Implemented: independent full-table calculation, hand check and boundary review |
 | baselines.py | Định, Hiếu | Implemented: learning table → four baseline predictions and metrics |
 | run_task2.py | Định, Hiếu | Implemented: verified clean panel → complete Task 2 validation run |
-| models.py | Huy, Tiến | Planned: RF/HGB predictions and settings |
-| evaluate.py | Hân, Định, Hiếu | Planned: final aligned comparison and figures |
-| sarimax.py | Huy, Tiến | Optional, not implemented |
+| models.py | Huy, Tiến | Model handoff commit `3670f89`: RF/HGB training and settings |
+| evaluate.py | Định | Implemented: forecast alignment, coverage checks and evaluation tables |
+| run_task5_test.py | Định | Implemented: fixed model settings and aligned 2026 test results |
+| report_task5_han.py | Hân | Reproduces the supporting Task 5 tables and diagnostic figures |
+| recreate_task5_figures.py | Task 5 integration | Recreates the four views selected for Hiếu's main figures |
+| sarimax.py | Huy, Tiến | Model handoff commit `3670f89`: SARIMA validation on 67 ports |
 
 Use functions for reading data, building features, fitting and exporting. Each script should accept explicit paths and configuration, avoid machine-specific absolute paths, and run from the repository root. Add exact commands to README only after they work.
 
-Task 1/2 use the pinned `requirements.txt`. Baseline regressions use NumPy ordinary least squares. RF/HGB will need scikit-learn and the optional SARIMAX branch may need statsmodels; add tested versions when those implementations begin.
+Task 1/2 use the pinned `requirements.txt`. Baseline regressions use NumPy ordinary least squares. RF/HGB use scikit-learn 1.9.1. The model handoff's SARIMA validation uses statsmodels 0.15.0.
 
 Task 2 commands and role assignments are in `docs/task2_pipeline.md`. From the repository root, use `python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv` with Hân's current handoff. `features.py` and `baselines.py` also run separately for development.
 
 Task 3 starts with `docs/task3_start.md`. The validation metric helper in `baselines.py` scores each `(model, feature_set)` separately; pass one clipping variant at a time.
+
+`run_task5_test.py` recreates the frozen Task 5 test forecasts with the reviewed Task 2 learning table and Task 3 model handoff. See the Task 5 commands in `results/README.md`.
 
 Before handoff, check a hand-worked seven-day label, a missing-date case, port isolation and boundary leakage. Verify the metrics against a tiny known example and WAPE’s zero-denominator case. Document checks beside each pull request.

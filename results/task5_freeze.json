@@ -1,0 +1,77 @@
+{
+  "status": "locked_before_test_scoring",
+  "recorded_at_utc": "2026-11-24T16:56:14+00:00",
+  "task2_handoff_commit": "a5dc638560b98248e08ee363af39e263debdf08c",
+  "model_commit": "3670f89b97730b8eb12ae05050b12a0ce3d10b0e",
+  "cohort": "210 ports with complete training coverage, retaining observed zeros",
+  "fit_period": "2019-01-01 through 2024-12-31. Fit each forecast model on the frozen training rows.",
+  "tuning_period": "2025 calendar-year target windows",
+  "refit_on_validation": false,
+  "origin_first": "2025-12-31",
+  "origin_last": "2026-09-25",
+  "target_start": "2026-01-01",
+  "target_end": "2026-10-02",
+  "scheduled_port_origins": 56490,
+  "prediction_rule": "Common score uses max(y_pred_raw, 0). Preserve any changed predictions locally.",
+  "primary_metric": "Test pooled MAE in metric tonnes, with RMSE and WAPE also reported",
+  "primary_comparison": [
+    "seasonal_naive/cargo_only",
+    "linear_univariate/cargo_only",
+    "linear_multivariate/all_three",
+    "polynomial_degree2/cargo_squared",
+    "random_forest/all_three",
+    "hist_gradient_boosting/all_three"
+  ],
+  "additional_comparison": "Six remaining validation-selected tree configurations for feature sensitivity.",
+  "sarima_scope": "Existing Task 4 validation comparison on the 67-port high-activity subset.",
+  "baseline_variants": [
+    {
+      "model": "seasonal_naive",
+      "feature_set": "cargo_only",
+      "columns": [
+        "cargo_7d"
+      ]
+    },
+    {
+      "model": "linear_univariate",
+      "feature_set": "cargo_only",
+      "columns": [
+        "cargo_7d"
+      ]
+    },
+    {
+      "model": "linear_multivariate",
+      "feature_set": "all_three",
+      "columns": [
+        "cargo_7d",
+        "calls_7d",
+        "cargo_mean_28d"
+      ]
+    },
+    {
+      "model": "polynomial_degree2",
+      "feature_set": "cargo_squared",
+      "columns": [
+        "cargo_7d"
+      ],
+      "quadratic": true
+    }
+  ],
+  "packages": {
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "scikit-learn": "1.9.1"
+  },
+  "sha256": {
+    "experiment": "ef91ea001f0b3db1584050067a027630eb54c2767979de4893f8cb91f9c130b2",
+    "panel": "f8c402ed90ad70d851b0cf82e4c57d1d810cc3faa3bac958efd4bf68dd96d9b6",
+    "learning_table": "d54d3cbe252556c79f10a17cb376b376b9918f72c546d0980471c1ef16f58c5a",
+    "ports": "306240963af681bdeb38d7bbee6a040801558fd406dd69f79c2229296374f0bf",
+    "baseline_code": "2817aa09801eafb01bf3a8736d9bf56c463477ab89231b41e3adfa363bd5ca41",
+    "feature_code": "ec04950afbbfcfc6f9b5a61e9bcedfd54213bb77112e4cc1e1b814967706573e",
+    "evaluator_code": "36669da230262c53edaf77382437fce6a91080cd2256e46520201fd9c02f9f83",
+    "test_runner_code": "9ea37658eb92a30978981a1e0158e93e6fda8dbb684530ac393336d706fcc744",
+    "model_code": "55ec1b0b0e2f91c3b9d7906631612233a3b258260f61a35ed616cae4f17ec70f",
+    "model_config": "0c4fd2ea507f14542cb4795ab8692d852cec22d8a877b36a8b26a293a04df36a"
+  }
+}

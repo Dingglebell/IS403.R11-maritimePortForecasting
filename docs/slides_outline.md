@@ -18,3 +18,5 @@ Plan for 26 slides, leaving at most four additional slides, including backup sli
 | 26 | References and questions | All |
 
 Show measured results only after evaluation. Do not fill unfinished result slides with example scores. Keep citations readable, units explicit and captions consistent with the paper. Rehearse once the instructor’s time allowance is known.
+
+Slides 18–21 use the [Task 5 figure set](../results/README.md#task-5-figure-set), moving from overall test MAE and MAE by activity to observed versus predicted cargo and large misses. Use the paper's overall table to explain RMSE and WAPE. The country and detailed case plots are supporting material.

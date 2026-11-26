@@ -15,6 +15,4 @@ Hân: 1, 5, 6. Định and Hiếu: 2, 5, 6. Huy and Tiến: 3, 4, 6.
 
 Dependencies: Task 1 → Task 2 → Task 3 → Task 5 → Task 6. Task 4 literature work can begin immediately; the optional extension depends on Tasks 1 and 2. Everyone can draft their paper section while working.
 
-All task outputs are planned handoffs. Their filenames do not imply the analysis or modelling has already been completed.
-
-Task 2 completion and the handoff for Huy/Tiến are recorded in [the completion review](task2_completion.md). The recorded final comparison keeps 210 eligible ports and nonnegative forecasts. Test evaluation remains reserved.
+The briefs define the planned handoffs. The [Task 2 completion review](task2_completion.md) records the 210-port cohort and nonnegative forecast rule. The [Task 5 handoff](../results/README.md#task-5-handoff-to-hân-and-hiếu) has the fixed 2026 test results for Hân's discussion and Hiếu's figures.
