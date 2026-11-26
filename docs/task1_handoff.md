@@ -10,7 +10,7 @@
 | Tên cảng và nguồn | `data/ports_metadata.csv`, `data/source_manifest.csv` | Tên nguồn, hash, ngày kiểm tra và URL nguồn ổn định |
 | Báo cáo kiểm tra | `results/data_audit.md` | Trùng lặp, lịch ngày, giá trị thiếu/sai, số 0, chuỗi số 0 dài, đối chiếu các cột tổng |
 | Đánh giá số 0 | `docs/zero_handling.md`, `results/zero_validation.md` | Thiết kế, kết quả, ngoại lệ, kiểm tra độ ổn định và giới hạn |
-| Phần viết bài | `docs/data_eda.md` | Phần Data and Exploratory Analysis bằng tiếng Anh, có bảng và hình |
+| Phần viết bài | `docs/task1_data_eda.md` | Phần Data and Exploratory Analysis bằng tiếng Anh, có bảng và hình |
 | Biểu đồ | `results/figures/` | Lịch sử khối lượng, tần suất hoạt động, cargo–calls và so sánh xử lý số 0 |
 | Python | `src/prepare_data.py`, `src/analyze_task1.py` | Làm sạch và tái tạo kiểm toán/đánh giá; không thay thế bộ mô hình chính của Task 2 |
 

@@ -2,11 +2,11 @@
 
 ## Supplied planning sources
 
-- PTDLKD - Kế hoạch đồ án.docx: project stages, full member names, assignments and two differing schedules.
+- The [original work plan (PDF)](project_plan.pdf) records project stages, member names and assignments. The [project plan summary](project_plan.md) documents the two schedules.
 - PTDLKD - Script giới thiệu đồ án.pdf: problem, proposed features, sources and preliminary dataset description.
 - PTDLKD- GioiThieuDeTaiSlide.pdf: five-slide introduction, daily seven-day target and preliminary ten-country snapshot.
 
-These files are background evidence. The user’s current request defines the deliverables and scope. Original attachments and the group’s private data-sharing link are not copied into this public repository. Preliminary counts must be reproduced from the actual snapshot.
+The introduction files describe the preliminary scope. Use the [verified data audit](../results/data_audit.md) for the snapshot counts and the [data handoff](../data/README.md) for access instructions.
 
 ## Research references transcribed from the introduction
 

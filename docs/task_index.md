@@ -1,4 +1,4 @@
-# Group task documents
+# Task briefs and handoffs
 
 Each document corresponds to one row of the assignment table. Names in filenames omit accents for convenient shell use; full names appear inside. Task 1 has one owner, Task 5 has three, and Task 6 includes all five. Suggested divisions within a pair are proposals, not changes to the original assignment.
 
@@ -15,4 +15,4 @@ Hân: 1, 5, 6. Định and Hiếu: 2, 5, 6. Huy and Tiến: 3, 4, 6.
 
 Dependencies: Task 1 → Task 2 → Task 3 → Task 5 → Task 6. Task 4 literature work can begin immediately; the optional extension depends on Tasks 1 and 2. Everyone can draft their paper section while working.
 
-The briefs define the planned handoffs. The [Task 2 completion review](task2_completion.md) records the 210-port cohort and nonnegative forecast rule. The [Task 5 handoff](../results/README.md#task-5-handoff-to-hân-and-hiếu) has the fixed 2026 test results for Hân's discussion and Hiếu's figures.
+For the working outputs, see the [Task 1 data analysis](task1_data_eda.md), [Task 2 completion review](task2_completion.md), [Task 3 start guide](task3_start.md), [Task 5 results and discussion](task5_results_discussion.md), and the Task 6 [paper](task6_paper_outline.md) and [slide](task6_slides_outline.md) outlines.

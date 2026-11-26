@@ -25,7 +25,7 @@ The downloaded PortWatch snapshot and the shared experiment protocol. Agree prov
 | `data/ports_daily.csv` | Clean panel plus dictionary and audit |
 | `data/selected_ports.csv` | Port list and training-based groups |
 | `results/data_audit.md` | Counts, zero-day analysis and figures |
-| `docs/data_eda.md` | English Data and Exploratory Analysis |
+| `docs/task1_data_eda.md` | English Data and Exploratory Analysis |
 
 ## Completion check
 

@@ -4,7 +4,6 @@ data/*
 !data/README.md
 !data/data_dictionary.md
 !data/source_manifest.csv
-!data/example.csv
 
 # Large generated outputs; compact reports, metrics and figures can be committed.
 results/*predictions*.csv
