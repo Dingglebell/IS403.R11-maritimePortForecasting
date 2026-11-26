@@ -27,7 +27,7 @@ Frozen configurations and predictions from Tasks 2 and 3; optional extension out
 | `results/test_predictions.csv` | Frozen aligned test forecasts |
 | `results/metrics.csv` | Metrics, counts and group labels |
 | `results/` | Comparison tables and figures |
-| `docs/results_discussion.md` | English results and business implications |
+| `docs/task5_results_discussion.md` | English results and business implications |
 
 ## Completion check
 

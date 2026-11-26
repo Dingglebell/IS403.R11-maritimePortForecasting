@@ -101,6 +101,6 @@ The verified first run contains 453,180 training rows and 75,390 validation rows
 
 ## Completion and pull request
 
-The completion review checks the calendar examples, split boundaries, training-only eligibility, baseline definitions, evaluation keys and error calculations. Evidence and recorded decisions are in `docs/task2_completion.md`; the English method section is `docs/features_baselines.md`. This records the completed technical review without claiming individual member approvals. Final test evaluation remains a later task.
+The completion review checks the calendar examples, split boundaries, training-only eligibility, baseline definitions, evaluation keys and error calculations. Evidence and recorded decisions are in `docs/task2_completion.md`; the English method section is `docs/task2_features_baselines.md`. This records the completed technical review without claiming individual member approvals. Final test evaluation remains a later task.
 
 Raw data, the learning table and large prediction/exclusion files remain local under the repository's ignore rules. Publish only code, documentation and reviewed compact summaries. Share the frozen local artifacts with Huy/Tiến through the agreed group channel. Run `git add -A`, commit, push your task branch, and open a pull request into `main` following the Git guide.

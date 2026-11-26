@@ -26,7 +26,7 @@ Task 1 clean panel, data dictionary and port-selection rules. Use docs/protocol.
 | `src/baselines.py` | Four baseline models |
 | `data/learning_table.csv` | Features, labels and split membership |
 | `results/validation_predictions.csv` | Common prediction schema |
-| `docs/features_baselines.md` | English method section |
+| `docs/task2_features_baselines.md` | English method section |
 
 ## Completion check
 

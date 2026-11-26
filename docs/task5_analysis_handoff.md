@@ -8,7 +8,7 @@ Yêu cầu tại `docs/Task 5_Han_Dinh_Hieu.md` và mục “Task 5 handoff to H
 
 | File | Mục đích |
 |---|---|
-| `docs/results_discussion.md` | Phần Results, Discussion and Operational Implications bằng tiếng Anh để ghép bài |
+| `docs/task5_results_discussion.md` | Phần Results, Discussion and Operational Implications bằng tiếng Anh để ghép bài |
 | `results/task5_han/tables.md` | Các bảng số liệu được tạo tự động từ kết quả Định |
 | `results/task5_han/country_activity.csv` | MAE/RMSE/WAPE/bias, số mẫu và thay đổi so với naïve theo quốc gia và nhóm |
 | `results/task5_han/zero_positive.csv` | So sánh riêng tuần tổng hàng bằng 0 và tuần có hàng |

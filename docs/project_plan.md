@@ -2,7 +2,7 @@
 
 The two source tables use different dates. Preserve both: stage dates are initial progress targets; assignment dates are working handoff deadlines for this repository. This is a scheduling proposal to confirm at the next meeting, not a claim that the instructor changed a deadline. Dates are interpreted as 2026 from the project term.
 
-Định's test evaluation is ready for Hân and Hiếu to use in Task 5. See the [handoff and current results](../results/README.md#task-5-handoff-to-hân-and-hiếu).
+The fixed test evaluation, Hân's discussion and Hiếu's figures are available in the [Task 5 results](../results/README.md#fixed-2026-test-results). Read the [original work plan](project_plan.pdf) for the Vietnamese assignment tables.
 
 ## Project stages
 

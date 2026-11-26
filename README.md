@@ -4,15 +4,15 @@ IS403.R11 · Group 5 · 2026
 
 Predict each port’s **total estimated cargo volume over the next 7 days**, in tonnes, from daily IMF PortWatch history. Cargo is `import + export`. Compare seasonal naïve, three regression baselines, Random Forest and Histogram Gradient Boosting. SARIMA/SARIMAX with oil prices is optional.
 
-**Status:** The Task 5 evaluator scored the fixed 2026 test comparison on 210 ports. Each model variant used the same 56,490 port-origin pairs. Hân's [results and discussion](docs/results_discussion.md) now uses [Hiếu's four main figures](results/README.md#task-5-figure-set). The [results guide](results/README.md#fixed-2026-test-results) links the comparison, coverage report and reproduction commands. Raw data, learning tables and row-level predictions stay local.
+**Status:** The Task 5 evaluator scored the fixed 2026 test comparison on 210 ports. Each model variant used the same 56,490 port-origin pairs. Hân's [results and discussion](docs/task5_results_discussion.md) now uses [Hiếu's four main figures](results/README.md#task-5-figure-set). The [results guide](results/README.md#fixed-2026-test-results) links the comparison, coverage report and reproduction commands. Raw data, learning tables and row-level predictions stay local.
 
 The [Task 3 guide](docs/task3_start.md) describes the RF/HGB experiments. The Task 5 freeze record identifies the exact model handoff used for scoring.
 
 ## Start here
 
-1. Read [the project plan and next steps](docs/project_plan.md).
-2. Open [your task brief](docs/tasks.md), then agree the shared [experiment protocol](docs/protocol.md).
-3. Follow the [beginner Git Bash guide](docs/git_bash_guide.md). A [one-page printable guide](docs/Git_Bash_Guide.pdf) is included.
+1. Read [the project plan and next steps](docs/project_plan.md) or open the [original work plan PDF](docs/project_plan.pdf).
+2. Find your [task brief and handoff](docs/task_index.md). The [experiment protocol](docs/protocol.md) defines the shared dataset, splits and comparison.
+3. Follow the [beginner Git Bash guide](docs/git_bash_guide.md). A [one-page printable guide](docs/git_bash_guide.pdf) is included.
 
 ## Four folders
 
@@ -51,7 +51,7 @@ python src/analyze_task1.py --raw-dir data/raw/hdx_2026-10-18
 
 Use the exact frozen snapshot. Newly downloaded data may be revised.
 
-Read the [Vietnamese handoff guide](docs/task1_handoff.md), [complete data dictionary](data/data_dictionary.md), [English paper section](docs/data_eda.md) and [zero-handling study](docs/zero_handling.md). The main diagnostic scores 75,390 common validation origins: retaining zeros yields OLS MAE 41,100.62 tonnes, versus 41,699.90 after dropping zero training labels and 60,426.61 after causal zero-history replacement. This finding is scoped to the documented model and original estimated targets; it is not proof that every zero is physically correct. The 20% eligibility sensitivity and country exceptions are disclosed separately.
+Read the [Vietnamese handoff guide](docs/task1_handoff.md), [complete data dictionary](data/data_dictionary.md), [English paper section](docs/task1_data_eda.md) and [zero-handling study](docs/zero_handling.md). The main diagnostic scores 75,390 common validation origins: retaining zeros yields OLS MAE 41,100.62 tonnes, versus 41,699.90 after dropping zero training labels and 60,426.61 after causal zero-history replacement. This finding is scoped to the documented model and original estimated targets; it is not proof that every zero is physically correct. The 20% eligibility sensitivity and country exceptions are disclosed separately.
 
 The full clean panel has 594,720 rows. The recommended `selected_ports.csv` retains 210 complete-training-coverage IDs, with the alternative 137-port rule recorded as a candidate flag. Shared rule approval is not assumed. See the [audit](results/data_audit.md) and [validation tables](results/zero_validation.md). Do not compare scores from different populations to select a rule. CSV datasets remain local per repository policy.
 
@@ -64,7 +64,7 @@ python -m unittest discover -s src -p 'test_*.py' -v
 python src/run_task2.py --panel data/da_xu_ly/ports_daily.csv
 ```
 
-This uses Hân's supplied processed CSV, verifies the Task 1 panel hash, builds the common train/validation table, and exports predictions, metrics and a run record. If you instead place the canonical clean panel at `data/ports_daily.csv`, omit `--panel`. It scores validation only and reports raw and nonnegative variants with the completed comparison rules. Read the [Task 2 pipeline and work split](docs/task2_pipeline.md) and the [English methods draft](docs/features_baselines.md).
+This uses Hân's supplied processed CSV, verifies the Task 1 panel hash, builds the common train/validation table, and exports predictions, metrics and a run record. If you instead place the canonical clean panel at `data/ports_daily.csv`, omit `--panel`. It scores validation only and reports raw and nonnegative variants with the completed comparison rules. Read the [Task 2 pipeline and work split](docs/task2_pipeline.md) and the [English methods draft](docs/task2_features_baselines.md).
 
 The verified run has 453,180 training rows and 75,390 validation rows per model across 210 ports. See the [baseline comparison](results/baseline_validation.md). Small result summaries and figures are tracked; large datasets, prediction files and row-level exclusion lists are ignored so `git add -A` stages the shareable project files.
 
@@ -86,6 +86,6 @@ Use a branch for each change and open a pull request into `main`. Another member
 
 ## Final submission
 
-An English research paper, no more than 30 slides, source code, data provenance and verified run instructions. Documents use Times New Roman 13, black text and gray table headers. The formatted PDFs follow this style; GitHub controls Markdown display fonts. See the [paper outline](docs/paper_outline.md) and [26-slide outline](docs/slides_outline.md).
+An English research paper, no more than 30 slides, source code, data provenance and verified run instructions. Documents use Times New Roman 13, black text and gray table headers. The formatted PDFs follow this style; GitHub controls Markdown display fonts. See the [paper outline](docs/task6_paper_outline.md) and [26-slide outline](docs/task6_slides_outline.md).
 
 The current request determines scope. The supplied work plan determines named assignments; earlier introduction requirements and unverified snapshot counts are background, not new commands. See [sources](docs/references.md).

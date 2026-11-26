@@ -40,7 +40,7 @@ Multivariate linear regression improves validation MAE by about 20.39% relative 
 - The combined test suite includes Hiếu's standalone export/provenance tests and the independent Step 2 checks; all 33 pass.
 - Final raw/nonnegative prediction files have identical keys and original labels. Metrics are independently recomputed from the exported forecasts.
 
-`results/task2_run.json` records the final pipeline run; `results/baseline_run.json` records the final standalone baseline run and output hashes. `results/baseline_review.json` and `docs/task2_hieu_baseline_review.md` preserve Hiếu's earlier 10 November review and its then-pending decisions; they are historical evidence, not the final configuration.
+The [pipeline run](../results/task2_run.json) and [standalone baseline run](../results/baseline_run.json) record the final settings and output hashes. Hiếu's [10 November review](https://github.com/Dingglebell/IS403.R11-maritimePortForecasting/blob/5961df8f58c46f3b5cf5f53b36c0551d414cdd92/docs/task2_hieu_baseline_review.md) and its [verification record](https://github.com/Dingglebell/IS403.R11-maritimePortForecasting/blob/5961df8f58c46f3b5cf5f53b36c0551d414cdd92/results/baseline_review.json) are available in the Git history.
 
 ## Handoff to Huy and Tiến
 
@@ -59,4 +59,4 @@ Use `data/learning_table.csv` for training and validation. It contains the share
 
 For Task 3, fit RF/HGB on the same training rows, choose settings on the same validation rows, apply the same nonnegative rule, and compare against these baselines. Run the cargo-only, cargo-plus-calls, cargo-plus-28-day-mean and all-three feature sets on identical keys. Disable a random automatic early-stopping split or use an explicit chronological validation procedure. Keep test evaluation for the later frozen comparison.
 
-The English method section is `docs/features_baselines.md`. PortWatch data are estimated; historical publication vintages are unavailable. Same-day observation availability remains a retrospective assumption, and forecasts do not measure congestion, capacity or cost savings.
+The English method section is `docs/task2_features_baselines.md`. PortWatch data are estimated; historical publication vintages are unavailable. Same-day observation availability remains a retrospective assumption, and forecasts do not measure congestion, capacity or cost savings.

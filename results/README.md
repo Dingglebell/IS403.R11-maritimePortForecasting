@@ -12,7 +12,7 @@ The diagnostic prediction file extends the protocol columns with `policy` and `c
 
 Suggested metric columns: model, feature_set, split, group_type, group_value, n_rows, n_ports, MAE, RMSE, WAPE_pct. Use NA for undefined WAPE. State units and sample counts on figures; export legible figures for the English paper and slides.
 
-`baseline_review.json` preserves Hiếu's historical 10 November check. Final settings and freshly reproduced output hashes are in `task2_run.json`, `baseline_run.json` and `experiment.json`.
+The final Task 2 settings and output hashes are in [the pipeline run](task2_run.json), [the standalone baseline run](baseline_run.json) and [the experiment configuration](../experiment.json). The [Task 2 completion review](../docs/task2_completion.md) also links to Hiếu's earlier review.
 
 ## Task 5 evaluation
 
@@ -55,18 +55,18 @@ The [summary CSV](task5_test_summary.csv) contains the 12 overall comparisons an
 
 ### Task 5 handoff to Hân and Hiếu
 
-Định's evaluation is ready for the figures and discussion. Use the `task5-validation-evaluation` branch in [PR #8](https://github.com/Dingglebell/IS403.R11-maritimePortForecasting/pull/8) for the result tables.
+The integrated Task 5 evaluation, discussion and figures are on `main`. The handoff below records who used each part of the fixed test run. [PR #10](https://github.com/Dingglebell/IS403.R11-maritimePortForecasting/pull/10)
 
 | Owner | Start with | Deliverable |
 |---|---|---|
-| Hân | [Metrics by group and port](metrics.csv), [overall comparison](task5_test_summary.csv) and [coverage](task5_test_coverage.csv) | English discussion in `docs/results_discussion.md`. Explain error differences by country, activity and observed cargo, with implications for staffing, equipment and yards. Quantifying capacity needs local operating data. |
+| Hân | [Metrics by group and port](metrics.csv), [overall comparison](task5_test_summary.csv) and [coverage](task5_test_coverage.csv) | English discussion in `docs/task5_results_discussion.md`. Explain error differences by country, activity and observed cargo, with implications for staffing, equipment and yards. Quantifying capacity needs local operating data. |
 | Hiếu | The local `test_predictions.csv` and `highest_error_predictions.csv` from the frozen run, plus the [overall comparison](task5_test_summary.csv) | Figures comparing observed and predicted seven-day totals, model errors and high-error cases. Use the `primary_comparison` flag for the main table and note that consecutive target windows overlap. |
 
 Định can share the row-level files through the group's data channel. Check the original shared files against the checksums in the [run record](task5_test_run.json). A fresh run reproduced all 677,880 forecast rows and aggregate metrics. Small floating-point differences in a fresh export can change its file checksum. The three Task 5 owners review the finished figures and discussion against the saved evaluation.
 
 ### Task 5 figure set
 
-[Hân's discussion](../docs/results_discussion.md) uses these four figures supplied by Hiếu. The original images are stored in `results/figures/`.
+[Hân's discussion](../docs/task5_results_discussion.md) uses these four figures supplied by Hiếu. The original images are stored in `results/figures/`.
 
 | Order | Figure | Evidence |
 |---|---|---|
